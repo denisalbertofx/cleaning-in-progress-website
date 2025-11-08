@@ -1,0 +1,145 @@
+---
+description: Apply this rule when working with database operations, creating database queries, setting up database connections, or integrating authentication with database operations
+globs: 
+---
+ # Database Integration Rules
+
+## Core Principles
+- Use Supabase as the ONLY database client
+- Use Supabase Postgres for all database operations
+- Use Supabase Storage for file uploads (blog images, covers)
+- All database operations MUST go through Supabase client
+- Keep database logic in dedicated service layers
+- Use the User Table "id" for referencing the user, not the "clerkId"
+- Use Server Actions for database mutations (no API routes needed)
+
+## Database Access Pattern
+```typescript
+// ✅ CORRECT: Using Supabase client
+import { createClient } from '@/lib/supabase/server'
+
+async function getUserPosts(userId: string) {
+  const supabase = createClient()
+  const { data, error } = await supabase
+    .from('posts')
+    .select('*, author:users(*)')
+    .eq('user_id', userId)
+  
+  if (error) throw error
+  return data
+}
+
+// ✅ CORRECT: Using Supabase in Server Actions
+'use server'
+import { createClient } from '@/lib/supabase/server'
+
+export async function createPost(input: PostInput) {
+  const supabase = createClient()
+  const { data, error } = await supabase
+    .from('posts')
+    .insert(input)
+    .select()
+    .single()
+  
+  if (error) throw error
+  return data
+}
+
+// ❌ INCORRECT: Direct database connection or raw SQL
+import { Pool } from 'pg'
+const pool = new Pool({ ... })
+```
+
+## Best Practices
+1. Always use Supabase's type-safe queries with TypeScript
+2. Implement database operations in service layers under `src/services/`
+3. Use Supabase RLS (Row Level Security) policies for data access control
+4. Leverage Supabase transactions for atomic operations
+5. Keep Supabase schema as source of truth
+6. Use Supabase migrations for all schema changes
+7. Use Server Actions instead of API routes for mutations
+
+## Error Handling
+```typescript
+// Recommended error handling pattern
+try {
+  const supabase = createClient()
+  const { data, error } = await supabase
+    .from('posts')
+    .insert(postData)
+    .select()
+    .single()
+  
+  if (error) {
+    // Handle Supabase errors
+    console.error('Supabase error:', error)
+    throw new Error(`Failed to create post: ${error.message}`)
+  }
+  
+  return data
+} catch (error) {
+  // Handle unexpected errors
+  throw error
+}
+```
+
+## Service Layer Structure
+```
+src/
+└── services/
+    ├── user.service.ts
+    ├── post.service.ts
+    ├── lead.service.ts
+    └── storage.service.ts  # For Supabase Storage operations
+```
+
+## Storage Operations (Supabase Storage)
+```typescript
+// ✅ CORRECT: Uploading to Supabase Storage
+import { createClient } from '@/lib/supabase/server'
+
+export async function uploadImageToSupabase(file: File, path: string) {
+  const supabase = createClient()
+  const { data, error } = await supabase.storage
+    .from('blog')
+    .upload(path, file, {
+      cacheControl: '3600',
+      upsert: false
+    })
+  
+  if (error) throw error
+  
+  const { data: { publicUrl } } = supabase.storage
+    .from('blog')
+    .getPublicUrl(path)
+  
+  return publicUrl
+}
+```
+
+## Authentication Integration
+- Use Clerk for authentication
+- Store user data in Supabase database through service layer
+- Sync Clerk webhook events with database using Supabase operations
+- Never bypass Supabase for user data management
+- Use Clerk user ID to reference users in database
+
+## Row Level Security (RLS)
+- Implement RLS policies in Supabase dashboard
+- Public posts: `status = 'published'` → readable by everyone
+- Admin operations: Protected by Clerk JWT → Admin role only
+- Never expose Supabase service role key on client-side
+
+## Performance Considerations
+- Use Supabase's select() with specific columns for efficient queries
+- Implement proper pagination using Supabase's range() method
+- Cache frequently accessed data at application level
+- Use Supabase's .single() for single record lookups
+- Leverage Supabase indexes for frequently queried columns
+
+## Security Guidelines
+- Never expose Supabase service role key on client-side
+- Use server components or Server Actions for database operations
+- Implement proper data validation (Zod) before Supabase operations
+- Use Supabase RLS policies for data access control
+- Always validate Clerk authentication before admin operations
