@@ -32,7 +32,7 @@ export const contactInfo = {
   ceo: {
     name: 'Anisel Perez',
     email: 'anicelperez417@gmail.com',
-    photo: '/images/team/ceo-anisel-perez.jpg',
+    photo: '/images/team/ceo-anisel-perez.png',
   },
 }
 
