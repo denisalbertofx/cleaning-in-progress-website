@@ -1,0 +1,238 @@
+{
+  "services": [
+    {
+      "id": "1",
+      "title": "Limpieza Residencial",
+      "slug": "limpieza-residencial-miami",
+      "description": "Servicio completo de limpieza para hogares en Miami",
+      "icon": "Home",
+      "iconFile": "icon-residencial.png",
+      "imageFile": "servicio-residencial.jpg",
+      "features": [
+        "Limpieza profunda de todas las habitaciones",
+        "Aseo de baños y cocinas",
+        "Aspirado y trapeado de pisos",
+        "Limpieza de ventanas y espejos"
+      ],
+      "areas": ["Miami Beach", "Downtown Miami", "Coral Gables", "Brickell"]
+    },
+    {
+      "id": "2",
+      "title": "Limpieza Comercial",
+      "slug": "limpieza-comercial-miami",
+      "description": "Mantenimiento profesional para oficinas y locales comerciales",
+      "icon": "Building",
+      "iconFile": "icon-comercial.png",
+      "imageFile": "servicio-comercial.jpg",
+      "features": [
+        "Limpieza diaria, semanal o mensual",
+        "Aseo de baños y áreas comunes",
+        "Limpieza de escritorios y equipos",
+        "Recolección de basura y reciclaje"
+      ],
+      "areas": ["Miami", "Doral", "Aventura", "West Miami"]
+    },
+    {
+      "id": "3",
+      "title": "Limpieza de Oficinas",
+      "slug": "limpieza-de-oficinas-miami",
+      "description": "Servicio especializado para oficinas y espacios de trabajo",
+      "icon": "Briefcase",
+      "iconFile": "icon-oficinas.png",
+      "imageFile": "servicio-oficinas.jpg",
+      "features": [
+        "Limpieza de escritorios y equipos",
+        "Aseo de áreas comunes y salas de reunión",
+        "Mantenimiento de baños y cocinas",
+        "Servicio flexible según horarios"
+      ],
+      "areas": ["Downtown Miami", "Brickell", "Coral Gables", "Doral"]
+    },
+    {
+      "id": "4",
+      "title": "Limpieza Profunda",
+      "slug": "limpieza-profunda-miami",
+      "description": "Limpieza exhaustiva y detallada para espacios que requieren atención especial",
+      "icon": "Sparkles",
+      "iconFile": "icon-limpieza-profunda.png",
+      "imageFile": "servicio-limpieza-profunda.jpg",
+      "features": [
+        "Limpieza detallada de cada rincón",
+        "Desinfección profunda de superficies",
+        "Limpieza de áreas de difícil acceso",
+        "Resultados impecables garantizados"
+      ],
+      "areas": ["Todo Miami-Dade"]
+    },
+    {
+      "id": "5",
+      "title": "Limpieza Post-Construcción",
+      "slug": "limpieza-post-construccion-miami",
+      "description": "Limpieza profunda después de obras y remodelaciones",
+      "icon": "Hammer",
+      "iconFile": "icon-post-construccion.png",
+      "imageFile": "servicio-post-construccion.jpg",
+      "features": [
+        "Eliminación de polvo y residuos",
+        "Limpieza de ventanas y vidrios",
+        "Aseo completo de todas las áreas",
+        "Preparación para entrega"
+      ],
+      "areas": ["Todo Miami-Dade"]
+    },
+    {
+      "id": "6",
+      "title": "Limpieza de Alfombras",
+      "slug": "limpieza-de-alfombras-miami",
+      "description": "Servicio especializado de limpieza y mantenimiento de alfombras",
+      "icon": "Square",
+      "iconFile": "icon-alfombras.png",
+      "imageFile": "servicio-alfombras.jpg",
+      "features": [
+        "Limpieza profunda con vapor",
+        "Eliminación de manchas y olores",
+        "Desinfección y sanitización",
+        "Secado rápido"
+      ],
+      "areas": ["Miami", "Miami Beach", "Coral Gables"]
+    }
+  ],
+  "blogPosts": [
+    {
+      "id": "1",
+      "title": "5 Consejos para Mantener tu Hogar Limpio en Miami",
+      "slug": "limpieza-en-casa",
+      "excerpt": "Descubre los mejores consejos para mantener tu hogar impecable en el clima húmedo de Miami.",
+      "coverImage": "/images/blog/blog-cleaning-tips.png",
+      "category": "Consejos",
+      "readTime": "5 min",
+      "publishedAt": "2024-11-01",
+      "author": "Cleaning in Progress"
+    },
+    {
+      "id": "2",
+      "title": "Por qué la Limpieza Profesional es Esencial para Oficinas",
+      "slug": "higiene-en-oficinas",
+      "excerpt": "La importancia de mantener un ambiente de trabajo limpio y saludable para aumentar la productividad.",
+      "coverImage": "/images/blog/blog-office-hygiene.png",
+      "category": "Negocios",
+      "readTime": "7 min",
+      "publishedAt": "2024-10-25",
+      "author": "Cleaning in Progress"
+    },
+    {
+      "id": "3",
+      "title": "Guía Completa de Limpieza Antes de Mudarse",
+      "slug": "limpieza-antes-de-mudarse",
+      "excerpt": "Todo lo que necesitas saber sobre la limpieza antes de mudarte a tu nuevo hogar.",
+      "coverImage": "/images/blog/blog-moving-cleaning.png",
+      "category": "Guías",
+      "readTime": "10 min",
+      "publishedAt": "2024-10-18",
+      "author": "Cleaning in Progress"
+    },
+    {
+      "id": "4",
+      "title": "Cuidado y Mantenimiento de Alfombras en Miami",
+      "slug": "cuidado-de-alfombras",
+      "excerpt": "Consejos profesionales para mantener tus alfombras limpias y en perfecto estado.",
+      "coverImage": "/images/blog/blog-carpet-care.png",
+      "category": "Consejos",
+      "readTime": "6 min",
+      "publishedAt": "2024-10-10",
+      "author": "Cleaning in Progress"
+    },
+    {
+      "id": "5",
+      "title": "Productos Ecológicos para Limpieza Profesional",
+      "slug": "productos-ecologicos",
+      "excerpt": "Descubre cómo usar productos ecológicos sin comprometer la calidad de la limpieza.",
+      "coverImage": "/images/blog/blog-eco-clean-products.png",
+      "category": "Sostenibilidad",
+      "readTime": "8 min",
+      "publishedAt": "2024-10-05",
+      "author": "Cleaning in Progress"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "1",
+      "name": "María González",
+      "location": "Miami Beach",
+      "rating": 5,
+      "text": "Excelente servicio. Mi casa quedó impecable y el equipo fue muy profesional y puntual. Los recomiendo 100%.",
+      "photo": "/images/testimonials/testimonial-person-portrait-1.png",
+      "service": "Limpieza Residencial"
+    },
+    {
+      "id": "2",
+      "name": "Carlos Rodríguez",
+      "location": "Downtown Miami",
+      "rating": 5,
+      "text": "Contratamos su servicio para nuestra oficina y estamos muy satisfechos. Siempre puntuales y muy limpios.",
+      "photo": "/images/testimonials/testimonial-person-portrait-2.png",
+      "service": "Limpieza Comercial"
+    },
+    {
+      "id": "3",
+      "name": "Ana Martínez",
+      "location": "Coral Gables",
+      "rating": 5,
+      "text": "Después de nuestra remodelación, necesitábamos una limpieza profunda. Hicieron un trabajo excepcional.",
+      "photo": "/images/testimonials/testimonial-avatar-plain.png",
+      "service": "Limpieza Post-Construcción"
+    },
+    {
+      "id": "4",
+      "name": "Roberto Silva",
+      "location": "Brickell",
+      "rating": 5,
+      "text": "Servicio de limpieza de alfombras excelente. Eliminaron manchas que pensé que eran permanentes.",
+      "photo": "/images/testimonials/testimonial-avatar-plain.png",
+      "service": "Limpieza de Alfombras"
+    }
+  ],
+  "faqs": [
+    {
+      "id": "1",
+      "question": "¿Qué áreas de Miami cubren?",
+      "answer": "Ofrecemos servicios en todo Miami-Dade, incluyendo Miami Beach, Downtown Miami, Coral Gables, Brickell, Doral, Aventura y áreas circundantes."
+    },
+    {
+      "id": "2",
+      "question": "¿Cuánto tiempo toma una limpieza residencial?",
+      "answer": "El tiempo varía según el tamaño de la propiedad. Una casa promedio de 3 habitaciones toma aproximadamente 3-4 horas. Ofrecemos estimaciones gratuitas."
+    },
+    {
+      "id": "3",
+      "question": "¿Proporcionan los productos de limpieza?",
+      "answer": "Sí, traemos todos los productos y equipos necesarios. Usamos productos de calidad profesional y ecológicos cuando es posible."
+    },
+    {
+      "id": "4",
+      "question": "¿Ofrecen servicios de limpieza regular?",
+      "answer": "Sí, ofrecemos planes de limpieza semanal, quincenal y mensual con descuentos especiales para clientes recurrentes."
+    },
+    {
+      "id": "5",
+      "question": "¿Están asegurados?",
+      "answer": "Sí, estamos completamente asegurados y con licencia. Su propiedad está protegida mientras trabajamos."
+    },
+    {
+      "id": "6",
+      "question": "¿Cómo puedo solicitar una cotización?",
+      "answer": "Puede contactarnos por teléfono, WhatsApp o completar el formulario en nuestra página de contacto. Respondemos en menos de 24 horas."
+    }
+  ],
+  "company": {
+    "name": "Cleaning in Progress",
+    "phone": "+1 (305) 555-0123",
+    "phoneRaw": "13055550123",
+    "whatsapp": "+13055550123",
+    "whatsappRaw": "13055550123",
+    "email": "info@cleaninginprogress.com",
+    "address": "123 Main Street, Miami, FL 33101",
+    "hours": "Lunes - Viernes: 8:00 AM - 6:00 PM | Sábados: 9:00 AM - 4:00 PM"
+  }
+}
+

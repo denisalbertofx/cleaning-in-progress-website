@@ -1,0 +1,9 @@
+⚠️ IMPORTANTE: El logo NO está cargado
+
+Para que el logo y favicon funcionen, necesitas subir:
+
+1. /public/images/logo/logo-cleaning-in-progress.png (logo principal)
+2. /public/favicon.ico (favicon - en la raíz de public/)
+3. /public/images/logo/apple-touch-icon.png (para Apple)
+
+Ver INSTRUCCIONES_LOGO.md para más detalles
