@@ -1,5 +1,4 @@
 import { CheckCircle, Shield, Clock, Star, Users, Award } from 'lucide-react'
-import Image from 'next/image'
 import { generateMetadata as generateSEOMetadata } from '@/lib/seo'
 import { contactInfo } from '@/lib/contact-info'
 import mockData from '@/data/mock-data.json'
@@ -170,18 +169,23 @@ export default function NosotrosPage() {
                 {/* CEO Photo */}
                 <div className="flex-shrink-0">
                   <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-[#0056A6]/10 shadow-medium bg-gray-100">
-                    <Image
+                    {/* Usar img normal si Next.js Image falla */}
+                    <img
                       src={contactInfo.ceo.photo}
                       alt={`${contactInfo.ceo.name} - CEO de Cleaning in Progress`}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 128px, 160px"
-                      unoptimized
-                      priority
+                      className="w-full h-full object-cover"
                       onError={(e) => {
                         console.error('Error loading CEO image:', contactInfo.ceo.photo)
+                        // Fallback: mostrar iniciales
                         const target = e.target as HTMLImageElement
                         target.style.display = 'none'
+                        const parent = target.parentElement
+                        if (parent && !parent.querySelector('.fallback-initials')) {
+                          const fallback = document.createElement('div')
+                          fallback.className = 'fallback-initials w-full h-full flex items-center justify-center bg-[#0056A6] text-white font-bold text-2xl'
+                          fallback.textContent = 'AP'
+                          parent.appendChild(fallback)
+                        }
                       }}
                     />
                   </div>
