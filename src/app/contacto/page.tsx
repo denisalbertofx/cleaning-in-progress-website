@@ -540,19 +540,34 @@ export default function ContactoPage() {
                   </div>
                 </ScrollReveal>
 
-                {/* Map Placeholder */}
+                {/* Google Maps */}
                 <ScrollReveal direction="right" delay={0.4}>
                   <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
-                  <h3 className="text-xl font-bold text-[#1A1A1A] mb-4">
-                    Ubicación
-                  </h3>
-                  <div className="bg-gradient-to-br from-gray-100 to-gray-200 h-64 rounded-xl flex items-center justify-center border-2 border-dashed border-gray-300">
-                    <div className="text-center text-gray-500">
-                      <MapPin className="w-16 h-16 mx-auto mb-3 text-[#0056A6] opacity-50" />
-                      <p className="text-sm font-medium">Mapa de Google Maps</p>
-                      <p className="text-xs mt-1 text-gray-400">(Integrar en producción)</p>
+                    <h3 className="text-xl font-bold text-[#1A1A1A] mb-4">
+                      Ubicación
+                    </h3>
+                    <div className="rounded-xl overflow-hidden shadow-md border border-gray-200">
+                      <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114964.38943784567!2d-80.290556!3d25.7617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6f0f82ee6ac68d83%3A0x5fa01743d70c3070!2sCleaning%20in%20Progress%20Miami!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                        width="100%"
+                        height="300"
+                        style={{ border: 0 }}
+                        allowFullScreen
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        className="w-full"
+                        title="Áreas de Servicio - Cleaning in Progress Miami"
+                      />
                     </div>
-                  </div>
+                    <a
+                      href={contactInfo.googleMapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 inline-flex items-center text-sm text-[#0056A6] hover:text-[#004494] font-medium transition-colors"
+                    >
+                      <MapPin className="w-4 h-4 mr-2" />
+                      Ver en Google Maps
+                    </a>
                   </div>
                 </ScrollReveal>
               </div>
