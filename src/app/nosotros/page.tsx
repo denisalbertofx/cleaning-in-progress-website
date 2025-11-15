@@ -169,13 +169,14 @@ export default function NosotrosPage() {
                 {/* CEO Photo */}
                 <div className="flex-shrink-0">
                   <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-[#0056A6]/10 shadow-medium bg-gray-100">
-                    {/* Usar img normal si Next.js Image falla */}
+                    {/* Usar img normal con ruta absoluta para mejor compatibilidad */}
                     <img
-                      src={contactInfo.ceo.photo}
+                      src="/images/team/ceo-anisel-perez.png"
                       alt={`${contactInfo.ceo.name} - CEO de Cleaning in Progress`}
                       className="w-full h-full object-cover"
+                      loading="eager"
                       onError={(e) => {
-                        console.error('Error loading CEO image:', contactInfo.ceo.photo)
+                        console.error('Error loading CEO image:', '/images/team/ceo-anisel-perez.png')
                         // Fallback: mostrar iniciales
                         const target = e.target as HTMLImageElement
                         target.style.display = 'none'
