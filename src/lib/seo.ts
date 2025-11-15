@@ -5,7 +5,7 @@ const company = {
   name: 'Cleaning in Progress',
   phone: contactInfo.phone,
   email: contactInfo.email,
-  address: contactInfo.isMobileService ? undefined : contactInfo.address,
+  isMobileService: contactInfo.isMobileService,
   serviceAreas: contactInfo.serviceAreas || [],
 }
 
@@ -78,16 +78,7 @@ export function generateLocalBusinessSchema() {
     telephone: company.phone,
     email: company.email,
     // Servicio móvil - sin dirección física fija
-    ...(company.address ? {
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: company.address,
-        addressLocality: 'Miami',
-        addressRegion: 'FL',
-        postalCode: '33101',
-        addressCountry: 'US',
-      },
-    } : {}),
+    // No incluimos address ya que es un servicio móvil
     // Coordenadas del área de servicio (centro de Miami)
     geo: {
       '@type': 'GeoCoordinates',

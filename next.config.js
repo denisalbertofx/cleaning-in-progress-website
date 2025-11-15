@@ -17,9 +17,7 @@ const nextConfig = {
   swcMinify: true,
   
   // Experimental features para mejor rendimiento
-  experimental: {
-    optimizeCss: true,
-  },
+  // optimizeCss removido temporalmente para evitar conflictos con Tailwind
 }
 
 module.exports = nextConfig
