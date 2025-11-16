@@ -2,6 +2,7 @@ import { CheckCircle, Shield, Clock, Star, Users, Award } from 'lucide-react'
 import { generateMetadata as generateSEOMetadata } from '@/lib/seo'
 import { contactInfo } from '@/lib/contact-info'
 import mockData from '@/data/mock-data.json'
+import { CEOImage } from '@/components/CEOImage'
 
 export const metadata = generateSEOMetadata({
   title: 'Sobre Nosotros | Cleaning in Progress',
@@ -169,32 +170,7 @@ export default function NosotrosPage() {
                 {/* CEO Photo */}
                 <div className="flex-shrink-0">
                   <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-[#0056A6]/10 shadow-medium bg-gray-100">
-                    {/* Usar img normal con fallback a GitHub si Vercel no sirve el archivo */}
-                    <img
-                      src="/images/team/ceo-anisel-perez.png"
-                      alt={`${contactInfo.ceo.name} - CEO de Cleaning in Progress`}
-                      className="w-full h-full object-cover"
-                      loading="eager"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement
-                        // Intentar cargar desde GitHub como fallback
-                        if (!target.dataset.fallbackTried) {
-                          target.dataset.fallbackTried = 'true'
-                          target.src = 'https://raw.githubusercontent.com/denisalbertofx/cleaning-in-progress-website/main/public/images/team/ceo-anisel-perez.png'
-                          return
-                        }
-                        // Si GitHub también falla, mostrar iniciales
-                        console.error('Error loading CEO image from both sources')
-                        target.style.display = 'none'
-                        const parent = target.parentElement
-                        if (parent && !parent.querySelector('.fallback-initials')) {
-                          const fallback = document.createElement('div')
-                          fallback.className = 'fallback-initials w-full h-full flex items-center justify-center bg-[#0056A6] text-white font-bold text-2xl'
-                          fallback.textContent = 'AP'
-                          parent.appendChild(fallback)
-                        }
-                      }}
-                    />
+                    <CEOImage />
                   </div>
                 </div>
                 {/* CEO Info */}
