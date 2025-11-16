@@ -10,7 +10,7 @@ export function Footer() {
       { href: '/servicios/limpieza-residencial-miami', label: 'Limpieza Residencial' },
       { href: '/servicios/limpieza-comercial-miami', label: 'Limpieza Comercial' },
       { href: '/servicios/limpieza-post-construccion-miami', label: 'Post-Construcción' },
-      { href: '/servicios/limpieza-alfombras-miami', label: 'Limpieza de Alfombras' },
+      { href: '/servicios/limpieza-de-alfombras-miami', label: 'Limpieza de Alfombras' },
     ],
     empresa: [
       { href: '/nosotros', label: 'Sobre Nosotros' },
