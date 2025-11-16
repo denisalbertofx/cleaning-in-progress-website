@@ -454,7 +454,7 @@ export default function ContactoPage() {
                               href={getEmailUrl('Consulta sobre servicios de limpieza')}
                               className="text-[#0056A6] hover:text-[#004494] font-medium transition-colors break-all"
                             >
-                              {contactInfo.email}
+                              {contactInfo.emailCommercial}
                             </a>
                           </div>
                         </div>

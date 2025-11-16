@@ -222,7 +222,7 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
                     <strong>Teléfono:</strong> {contactInfo.phone}
                   </p>
                   <p className="text-xs sm:text-sm text-gray-600 text-readable">
-                    <strong>Email:</strong> {contactInfo.email}
+                    <strong>Email:</strong> {contactInfo.emailCommercial}
                   </p>
                 </div>
               </div>

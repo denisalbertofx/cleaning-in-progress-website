@@ -4,7 +4,7 @@ import { contactInfo } from '@/lib/contact-info'
 const company = {
   name: 'Cleaning in Progress',
   phone: contactInfo.phone,
-  email: contactInfo.email,
+  email: contactInfo.emailCommercial, // Usar email comercial para SEO
   isMobileService: contactInfo.isMobileService,
   serviceAreas: contactInfo.serviceAreas || [],
 }
@@ -12,7 +12,7 @@ const company = {
 export const siteConfig = {
   name: 'Cleaning in Progress',
   description: 'Servicios profesionales de limpieza residencial y comercial en Miami. Limpieza garantizada con resultados verificables.',
-  url: 'https://cleaninginprogress.com',
+  url: contactInfo.websiteUrl || 'https://www.cleaninginprogressmiami.com',
   ogImage: '/images/hero/hero-home.jpg',
   links: {
     twitter: '',

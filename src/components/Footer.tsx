@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react'
+import { Phone, Mail, MapPin, MessageCircle, Facebook } from 'lucide-react'
 import { getPhoneUrl, getEmailUrl, getWhatsAppUrl, contactInfo } from '@/lib/contact-info'
 
 export function Footer() {
@@ -58,7 +58,7 @@ export function Footer() {
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-[#00A884] flex-shrink-0" />
                 <a href={getEmailUrl('Consulta sobre servicios de limpieza')} className="text-gray-300 hover:text-white transition-colors font-medium break-all">
-                  {contactInfo.email}
+                  {contactInfo.emailCommercial}
                 </a>
               </div>
               <div className="text-gray-400 text-xs mt-2">
@@ -165,9 +165,17 @@ export function Footer() {
             <p className="text-sm text-gray-300">
               © {new Date().getFullYear()} Cleaning in Progress. Todos los derechos reservados.
             </p>
-            <div className="flex space-x-6">
-              {/* Aquí se pueden agregar iconos de redes sociales */}
+            <div className="flex items-center space-x-4">
               <span className="text-sm text-gray-300">Síguenos en redes sociales</span>
+              <a
+                href={contactInfo.facebookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-[#1877F2] transition-colors"
+                aria-label="Síguenos en Facebook"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
             </div>
           </div>
         </div>

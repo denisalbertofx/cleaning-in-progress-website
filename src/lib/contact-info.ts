@@ -9,7 +9,10 @@ export const contactInfo = {
   phoneRaw: '17869120996', // Solo números, sin espacios ni caracteres especiales
   whatsapp: '+17869120996', // Formato internacional con +
   whatsappRaw: '17869120996', // Solo números para wa.me
-  email: 'anicelperez417@gmail.com',
+  email: 'anicelperez417@gmail.com', // Email personal del CEO (mantener para sección CEO)
+  emailCommercial: 'info@cleaninginprogressmiami.com', // Email comercial para contacto general
+  websiteUrl: 'https://www.cleaninginprogressmiami.com',
+  facebookUrl: 'https://www.facebook.com/profile.php?id=61583838873749',
   // Servicio móvil - sin dirección física
   isMobileService: true,
   serviceAreas: [
@@ -77,10 +80,31 @@ export function getPhoneUrl(): string {
 }
 
 /**
- * Genera la URL de email
+ * Genera la URL de email comercial (para contacto general)
  */
 export function getEmailUrl(subject?: string, body?: string): string {
-  let url = `mailto:${contactInfo.email}`
+  let url = `mailto:${contactInfo.emailCommercial}`
+  const params: string[] = []
+  
+  if (subject) {
+    params.push(`subject=${encodeURIComponent(subject)}`)
+  }
+  if (body) {
+    params.push(`body=${encodeURIComponent(body)}`)
+  }
+  
+  if (params.length > 0) {
+    url += `?${params.join('&')}`
+  }
+  
+  return url
+}
+
+/**
+ * Genera la URL de email personal del CEO
+ */
+export function getCEOEmailUrl(subject?: string, body?: string): string {
+  let url = `mailto:${contactInfo.ceo.email}`
   const params: string[] = []
   
   if (subject) {
