@@ -6,8 +6,10 @@ import { BlogCard } from '@/features/blog/BlogCard'
 import { Button } from '@/components/ui/button'
 import { ScrollReveal } from '@/components/ScrollReveal'
 import mockData from '@/data/mock-data.json'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function BlogPage() {
+  const { t } = useLanguage()
   const { blogPosts } = mockData
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
 
@@ -27,10 +29,10 @@ export default function BlogPage() {
           <ScrollReveal>
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-3 sm:mb-4 px-2">
-                Blog de Limpieza Profesional
+                {t.blog.pageTitle}
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-gray-600 text-readable px-4">
-                Consejos, guías y noticias sobre limpieza en Miami
+                {t.blog.pageSubtitle}
               </p>
             </div>
           </ScrollReveal>
@@ -51,7 +53,7 @@ export default function BlogPage() {
                   : 'border-[#0056A6] text-[#0056A6] hover:bg-[#0056A6] hover:text-white'
               }
             >
-              Todas
+              {t.blog.allCategories}
             </Button>
             {categories.map((category) => (
               <Button
@@ -93,7 +95,7 @@ export default function BlogPage() {
           ) : (
             <div className="text-center py-12">
               <p className="text-gray-600 text-lg">
-                No hay artículos en esta categoría.
+                {t.blog.noPosts}
               </p>
             </div>
           )}

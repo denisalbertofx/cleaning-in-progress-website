@@ -1,37 +1,35 @@
+'use client'
+
 import { CheckCircle, Shield, Clock, Star, Users, Award } from 'lucide-react'
 import { generateMetadata as generateSEOMetadata } from '@/lib/seo'
 import { contactInfo } from '@/lib/contact-info'
 import mockData from '@/data/mock-data.json'
 import { CEOImage } from '@/components/CEOImage'
-
-export const metadata = generateSEOMetadata({
-  title: 'Sobre Nosotros | Cleaning in Progress',
-  description: 'Conoce más sobre Cleaning in Progress, tu empresa de confianza para servicios de limpieza profesional en Miami.',
-  url: 'https://cleaninginprogress.com/nosotros',
-})
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function NosotrosPage() {
+  const { t } = useLanguage()
 
   const values = [
     {
       icon: Shield,
-      title: 'Confianza',
-      description: 'Empresa local con años de experiencia y clientes satisfechos.',
+      title: t.about.values.trust.title,
+      description: t.about.values.trust.description,
     },
     {
       icon: Clock,
-      title: 'Puntualidad',
-      description: 'Llegamos a tiempo, siempre respetando tus horarios y necesidades.',
+      title: t.about.values.punctuality.title,
+      description: t.about.values.punctuality.description,
     },
     {
       icon: Star,
-      title: 'Calidad',
-      description: 'Estándares de limpieza profesional garantizados en cada servicio.',
+      title: t.about.values.quality.title,
+      description: t.about.values.quality.description,
     },
     {
       icon: Users,
-      title: 'Profesionalismo',
-      description: 'Equipo capacitado y comprometido con la excelencia.',
+      title: t.about.values.professionalism.title,
+      description: t.about.values.professionalism.description,
     },
   ]
 
@@ -42,10 +40,10 @@ export default function NosotrosPage() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-3 sm:mb-4 px-2">
-              Sobre Nosotros
+              {t.about.title}
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-gray-600 text-readable px-4">
-              Tu empresa de confianza para servicios de limpieza profesional en Miami
+              {t.about.subtitle}
             </p>
           </div>
         </div>
@@ -58,22 +56,17 @@ export default function NosotrosPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
               <div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#1A1A1A] mb-5 sm:mb-6">
-                  Nuestra Historia
+                  {t.about.history.title}
                 </h2>
                 <div className="space-y-4 text-gray-700 text-readable">
                   <p>
-                    Cleaning in Progress nació con la misión de proporcionar servicios de limpieza
-                    profesionales, confiables y de alta calidad para hogares y negocios en Miami.
+                    {t.about.history.paragraph1}
                   </p>
                   <p>
-                    Somos una empresa local enfocada en la calidad, no en el volumen. Cada cliente
-                    es importante para nosotros y nos comprometemos a superar sus expectativas en
-                    cada servicio.
+                    {t.about.history.paragraph2}
                   </p>
                   <p>
-                    Nuestro equipo está formado por profesionales capacitados y comprometidos con
-                    la excelencia, utilizando productos de calidad y técnicas probadas para
-                    garantizar resultados impecables.
+                    {t.about.history.paragraph3}
                   </p>
                 </div>
               </div>
@@ -82,22 +75,22 @@ export default function NosotrosPage() {
                   <div className="flex items-center space-x-3 sm:space-x-4">
                     <Award className="w-10 h-10 sm:w-12 sm:h-12 text-[#0056A6] flex-shrink-0" />
                     <div>
-                      <h3 className="font-semibold text-base sm:text-lg text-[#1A1A1A]">Años de Experiencia</h3>
-                      <p className="text-gray-600 text-sm sm:text-base text-readable">Servicio confiable desde nuestros inicios</p>
+                      <h3 className="font-semibold text-base sm:text-lg text-[#1A1A1A]">{t.about.history.yearsExperience}</h3>
+                      <p className="text-gray-600 text-sm sm:text-base text-readable">{t.about.history.yearsDescription}</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3 sm:space-x-4">
                     <Users className="w-10 h-10 sm:w-12 sm:h-12 text-[#0056A6] flex-shrink-0" />
                     <div>
-                      <h3 className="font-semibold text-base sm:text-lg text-[#1A1A1A]">Equipo Profesional</h3>
-                      <p className="text-gray-600 text-sm sm:text-base text-readable">Personal capacitado y certificado</p>
+                      <h3 className="font-semibold text-base sm:text-lg text-[#1A1A1A]">{t.about.history.professionalTeam}</h3>
+                      <p className="text-gray-600 text-sm sm:text-base text-readable">{t.about.history.teamDescription}</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3 sm:space-x-4">
                     <Star className="w-10 h-10 sm:w-12 sm:h-12 text-[#0056A6] flex-shrink-0" />
                     <div>
-                      <h3 className="font-semibold text-base sm:text-lg text-[#1A1A1A]">Clientes Satisfechos</h3>
-                      <p className="text-gray-600 text-sm sm:text-base text-readable">4.9+ de calificación promedio</p>
+                      <h3 className="font-semibold text-base sm:text-lg text-[#1A1A1A]">{t.about.history.satisfiedClients}</h3>
+                      <p className="text-gray-600 text-sm sm:text-base text-readable">{t.about.history.clientsDescription}</p>
                     </div>
                   </div>
                 </div>
@@ -112,10 +105,10 @@ export default function NosotrosPage() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-10 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-3 sm:mb-4 px-2">
-              Nuestros Valores
+              {t.about.values.title}
             </h2>
             <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto text-readable px-4">
-              Los principios que guían nuestro trabajo cada día
+              {t.about.values.subtitle}
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
@@ -142,12 +135,10 @@ export default function NosotrosPage() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-2xl sm:text-3xl font-bold text-[#1A1A1A] mb-5 sm:mb-6 px-2">
-              Nuestra Misión
+              {t.about.mission.title}
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-gray-700 text-readable px-4">
-              Proporcionar servicios de limpieza profesionales, confiables y de alta calidad que
-              superen las expectativas de nuestros clientes, creando espacios limpios y saludables
-              para hogares y negocios en Miami.
+              {t.about.mission.description}
             </p>
           </div>
         </div>
@@ -159,10 +150,10 @@ export default function NosotrosPage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10 sm:mb-12">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-3 sm:mb-4 px-2">
-                Nuestro Liderazgo
+                {t.about.leadership.title}
               </h2>
               <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto text-readable px-4">
-                Conoce a quien está al frente de nuestra empresa
+                {t.about.leadership.subtitle}
               </p>
             </div>
             <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 md:p-10">
@@ -179,16 +170,13 @@ export default function NosotrosPage() {
                     {contactInfo.ceo.name}
                   </h3>
                   <p className="text-lg sm:text-xl text-[#0056A6] font-semibold mb-4">
-                    CEO & Fundadora
+                    {t.about.leadership.ceo}
                   </p>
                   <p className="text-gray-700 text-readable mb-4">
-                    {contactInfo.ceo.name} es la fundadora y directora ejecutiva de Cleaning in Progress.
-                    Con una visión clara de excelencia y compromiso con la calidad, ha construido una
-                    empresa que se enfoca en superar las expectativas de cada cliente.
+                    {contactInfo.ceo.name} {t.about.leadership.description1}
                   </p>
                   <p className="text-gray-700 text-readable">
-                    Su dedicación a la calidad y el servicio al cliente ha sido la base del éxito
-                    de nuestra empresa en Miami.
+                    {t.about.leadership.description2}
                   </p>
                   <div className="mt-6">
                     <a
@@ -210,16 +198,16 @@ export default function NosotrosPage() {
       <section className="section-spacing bg-gradient-to-r from-[#0056A6] to-[#004494] text-white">
         <div className="container mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 px-2">
-            ¿Listo para Trabajar con Nosotros?
+            {t.about.cta.title}
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto text-readable px-4">
-            Contáctanos hoy y descubre la diferencia de trabajar con profesionales comprometidos.
+            {t.about.cta.subtitle}
           </p>
           <a
             href="/contacto"
             className="inline-block bg-white text-[#0056A6] hover:bg-gray-100 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold shadow-strong hover:shadow-elevated transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] text-sm sm:text-base"
           >
-            Solicitar Cotización
+            {t.about.cta.button}
           </a>
         </div>
       </section>

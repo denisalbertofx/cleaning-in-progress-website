@@ -24,8 +24,10 @@ import {
 import mockData from '@/data/mock-data.json'
 
 import { getWhatsAppUrl, getPhoneUrl, getEmailUrl, contactInfo } from '@/lib/contact-info'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function ContactoPage() {
+  const { t } = useLanguage()
   const { services } = mockData
   const { toast } = useToast()
   const [formData, setFormData] = useState({
@@ -46,21 +48,21 @@ export default function ContactoPage() {
     switch (name) {
       case 'fullName':
         if (!value.trim()) {
-          error = 'El nombre es requerido'
+          error = t.contact.form.validation.nameRequired
         } else if (value.trim().length < 2) {
-          error = 'El nombre debe tener al menos 2 caracteres'
+          error = t.contact.form.validation.nameMinLength
         }
         break
       case 'phone':
         if (!value.trim()) {
-          error = 'El teléfono es requerido'
+          error = t.contact.form.validation.phoneRequired
         } else if (!/^[\d\s\-\+\(\)]+$/.test(value)) {
-          error = 'Formato de teléfono inválido'
+          error = t.contact.form.validation.phoneInvalid
         }
         break
       case 'email':
         if (value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-          error = 'Formato de email inválido'
+          error = t.contact.form.validation.emailInvalid
         }
         break
     }
@@ -100,8 +102,8 @@ export default function ContactoPage() {
     
     if (Object.keys(newErrors).length > 0) {
       toast({
-        title: 'Error de validación',
-        description: 'Por favor, corrige los errores en el formulario.',
+        title: t.common.error,
+        description: t.contact.form.validation.validationError,
         variant: 'destructive',
         duration: 5000,
       })
@@ -124,8 +126,8 @@ export default function ContactoPage() {
       setErrors({})
       setTouched({})
       toast({
-        title: '¡Mensaje enviado!',
-        description: 'Nos pondremos en contacto contigo en menos de 24 horas.',
+        title: t.contact.form.success.title,
+        description: t.contact.form.success.message,
         duration: 5000,
       })
     }, 1500)
@@ -170,24 +172,24 @@ export default function ContactoPage() {
               <CheckCircle2 className="w-10 h-10 text-white" />
             </div>
             <h2 className="text-4xl font-bold text-[#1A1A1A] mb-4">
-              ¡Mensaje Enviado con Éxito!
+              {t.contact.form.success.title}
             </h2>
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              Gracias por contactarnos. Hemos recibido tu solicitud y nos pondremos en contacto contigo en menos de 24 horas.
+              {t.contact.form.success.message}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 onClick={() => setIsSubmitted(false)}
                 className="bg-[#0056A6] hover:bg-[#004494] text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all"
               >
-                Enviar Otro Mensaje
+                {t.contact.form.success.sendAnother}
               </Button>
               <Button
                 asChild
                 variant="outline"
                 className="border-[#0056A6] text-[#0056A6] hover:bg-[#0056A6] hover:text-white px-8 py-6 text-lg font-semibold"
               >
-                <a href="/">Volver al Inicio</a>
+                <a href="/">{t.contact.form.success.backHome}</a>
               </Button>
             </div>
           </div>
@@ -210,10 +212,10 @@ export default function ContactoPage() {
                 <span className="text-xs sm:text-sm font-semibold text-white">CONTACTO</span>
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 drop-shadow-lg leading-[1.1] sm:leading-tight px-2">
-                Contáctanos
+                {t.contact.title}
               </h1>
               <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 leading-relaxed text-readable px-4">
-                Estamos aquí para ayudarte. Solicita tu cotización gratuita hoy mismo.
+                {t.contact.subtitle}
               </p>
             </div>
           </ScrollReveal>
@@ -233,17 +235,17 @@ export default function ContactoPage() {
                       <span className="text-sm font-semibold text-[#0056A6]">SOLICITA TU COTIZACIÓN</span>
                     </div>
                     <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-3">
-                      Completa el Formulario
+                      {t.contact.form.title}
                     </h2>
                     <p className="text-gray-600">
-                      Llena el formulario y nos pondremos en contacto contigo lo antes posible.
+                      {t.contact.form.description}
                     </p>
                   </div>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="fullName" className="text-[#1A1A1A] font-semibold text-sm">
-                        Nombre Completo <span className="text-red-500">*</span>
+                        {t.contact.form.fullName} <span className="text-red-500">*</span>
                       </Label>
                       <Input
                         id="fullName"
@@ -277,7 +279,7 @@ export default function ContactoPage() {
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="phone" className="text-[#1A1A1A] font-semibold text-sm">
-                        Teléfono <span className="text-red-500">*</span>
+                        {t.contact.form.phone} <span className="text-red-500">*</span>
                       </Label>
                       <Input
                         id="phone"
@@ -311,9 +313,9 @@ export default function ContactoPage() {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-[#1A1A1A] font-semibold text-sm">
-                      Email
-                    </Label>
+                      <Label htmlFor="email" className="text-[#1A1A1A] font-semibold text-sm">
+                        {t.contact.form.email}
+                      </Label>
                     <Input
                       id="email"
                       name="email"
@@ -344,9 +346,9 @@ export default function ContactoPage() {
                     )}
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="service" className="text-[#1A1A1A] font-semibold text-sm">
-                      Servicio de Interés
-                    </Label>
+                      <Label htmlFor="service" className="text-[#1A1A1A] font-semibold text-sm">
+                        {t.contact.form.service}
+                      </Label>
                     <Select
                       value={formData.service}
                       onValueChange={(value) => setFormData({ ...formData, service: value })}
@@ -355,7 +357,7 @@ export default function ContactoPage() {
                         id="service"
                         className="h-12 w-full border-2 border-gray-200 focus:border-[#0056A6] focus:ring-2 focus:ring-[#0056A6]/20 rounded-lg transition-all text-[#1A1A1A] font-medium bg-white hover:border-gray-300 data-[placeholder]:text-gray-400"
                       >
-                        <SelectValue placeholder="Selecciona un servicio" />
+                        <SelectValue placeholder={t.contact.form.selectService} />
                       </SelectTrigger>
                       <SelectContent className="rounded-lg border-2 border-gray-200 shadow-2xl bg-white z-50">
                         {services.map((service) => (
@@ -371,9 +373,9 @@ export default function ContactoPage() {
                     </Select>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="message" className="text-[#1A1A1A] font-semibold text-sm">
-                      Mensaje
-                    </Label>
+                      <Label htmlFor="message" className="text-[#1A1A1A] font-semibold text-sm">
+                        {t.contact.form.message}
+                      </Label>
                     <Textarea
                       id="message"
                       name="message"
@@ -392,12 +394,12 @@ export default function ContactoPage() {
                     {isSubmitting ? (
                       <span className="flex items-center justify-center">
                         <Clock className="w-5 h-5 mr-2 animate-spin" />
-                        Enviando...
+                        {t.contact.form.sending}
                       </span>
                     ) : (
                       <span className="flex items-center justify-center">
                         <Send className="w-5 h-5 mr-2" />
-                        Enviar Solicitud
+                        {t.contact.form.send}
                       </span>
                     )}
                   </Button>
@@ -417,7 +419,7 @@ export default function ContactoPage() {
                       <Phone className="w-6 h-6 text-[#0056A6]" />
                     </div>
                     <h3 className="text-xl font-bold text-[#1A1A1A]">
-                      Información de Contacto
+                      {t.contact.info.title}
                     </h3>
                   </div>
                   <div className="space-y-5">
@@ -428,7 +430,7 @@ export default function ContactoPage() {
                             <Phone className="w-5 h-5 text-[#0056A6]" />
                           </div>
                           <div>
-                            <p className="font-semibold text-[#1A1A1A] mb-1">Teléfono</p>
+                            <p className="font-semibold text-[#1A1A1A] mb-1">{t.contact.info.phone}</p>
                             <a
                               href={getPhoneUrl()}
                               className="text-[#0056A6] hover:text-[#004494] font-medium transition-colors"
@@ -449,7 +451,7 @@ export default function ContactoPage() {
                             <Mail className="w-5 h-5 text-[#0056A6]" />
                           </div>
                           <div>
-                            <p className="font-semibold text-[#1A1A1A] mb-1">Email</p>
+                            <p className="font-semibold text-[#1A1A1A] mb-1">{t.contact.info.email}</p>
                             <a
                               href={getEmailUrl('Consulta sobre servicios de limpieza')}
                               className="text-[#0056A6] hover:text-[#004494] font-medium transition-colors break-all"
@@ -470,9 +472,9 @@ export default function ContactoPage() {
                             <MapPin className="w-5 h-5 text-[#0056A6]" />
                           </div>
                           <div>
-                            <p className="font-semibold text-[#1A1A1A] mb-1">Áreas de Servicio</p>
+                            <p className="font-semibold text-[#1A1A1A] mb-1">{t.contact.info.areas}</p>
                             <p className="text-gray-600 leading-relaxed text-sm">
-                              Servicio móvil en toda el área metropolitana de Miami
+                              {t.footer.serviceArea}
                             </p>
                             <a
                               href={contactInfo.googleMapsUrl}
@@ -495,7 +497,7 @@ export default function ContactoPage() {
                           <Clock className="w-5 h-5 text-[#0056A6]" />
                         </div>
                         <div>
-                          <p className="font-semibold text-[#1A1A1A] mb-1">Horarios</p>
+                          <p className="font-semibold text-[#1A1A1A] mb-1">{t.contact.info.hours}</p>
                             <p className="text-sm text-gray-600 leading-relaxed">{contactInfo.businessHours}</p>
                         </div>
                       </div>
@@ -508,10 +510,10 @@ export default function ContactoPage() {
                 <ScrollReveal direction="right" delay={0.2}>
                   <div className="bg-gradient-to-br from-[#0056A6]/95 to-[#004494]/95 backdrop-blur-md p-6 rounded-2xl shadow-lg text-white border border-white/20">
                   <h3 className="text-xl font-bold mb-4">
-                    Contacto Rápido
+                    {t.contact.info.quickContact}
                   </h3>
                   <p className="text-white/90 mb-6 text-sm">
-                    ¿Necesitas una respuesta inmediata? Contáctanos ahora mismo.
+                    {t.contact.info.quickContactDesc}
                   </p>
                   <div className="space-y-3">
                     <Button
@@ -544,7 +546,7 @@ export default function ContactoPage() {
                 <ScrollReveal direction="right" delay={0.4}>
                   <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
                     <h3 className="text-xl font-bold text-[#1A1A1A] mb-4">
-                      Ubicación
+                      {t.contact.info.location}
                     </h3>
                     <div className="rounded-xl overflow-hidden shadow-md border border-gray-200">
                       <iframe

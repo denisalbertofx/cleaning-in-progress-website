@@ -76,6 +76,10 @@ export interface Translations {
   services: {
     title: string
     subtitle: string
+    pageTitle: string
+    pageSubtitle: string
+    notFound: string
+    notFoundDesc: string
     requestQuote: string
     talkWhatsApp: string
     process: {
@@ -86,6 +90,7 @@ export interface Translations {
     features: string
     areas: string
     ready: string
+    customQuote: string
   }
   // Nosotros
   about: {
@@ -93,19 +98,47 @@ export interface Translations {
     subtitle: string
     history: {
       title: string
+      paragraph1: string
+      paragraph2: string
+      paragraph3: string
+      yearsExperience: string
+      yearsDescription: string
+      professionalTeam: string
+      teamDescription: string
+      satisfiedClients: string
+      clientsDescription: string
     }
     values: {
       title: string
       subtitle: string
+      trust: {
+        title: string
+        description: string
+      }
+      punctuality: {
+        title: string
+        description: string
+      }
+      quality: {
+        title: string
+        description: string
+      }
+      professionalism: {
+        title: string
+        description: string
+      }
     }
     mission: {
       title: string
+      description: string
     }
     leadership: {
       title: string
       subtitle: string
       ceo: string
       founder: string
+      description1: string
+      description2: string
     }
     cta: {
       title: string
@@ -117,24 +150,32 @@ export interface Translations {
   contact: {
     title: string
     subtitle: string
-    form: {
-      title: string
-      description: string
-      fullName: string
-      phone: string
-      email: string
-      service: string
-      message: string
-      selectService: string
-      send: string
-      sending: string
-      success: {
+      form: {
         title: string
+        description: string
+        fullName: string
+        phone: string
+        email: string
+        service: string
         message: string
-        sendAnother: string
-        backHome: string
+        selectService: string
+        send: string
+        sending: string
+        validation: {
+          nameRequired: string
+          nameMinLength: string
+          phoneRequired: string
+          phoneInvalid: string
+          emailInvalid: string
+          validationError: string
+        }
+        success: {
+          title: string
+          message: string
+          sendAnother: string
+          backHome: string
+        }
       }
-    }
     info: {
       title: string
       phone: string
@@ -150,6 +191,10 @@ export interface Translations {
   blog: {
     title: string
     subtitle: string
+    pageTitle: string
+    pageSubtitle: string
+    allCategories: string
+    noPosts: string
     readMore: string
     backToBlog: string
     share: string
@@ -158,11 +203,17 @@ export interface Translations {
   testimonials: {
     title: string
     subtitle: string
+    ctaTitle: string
+    ctaSubtitle: string
+    ctaButton: string
   }
   // FAQ
   faq: {
     title: string
     subtitle: string
+    ctaTitle: string
+    ctaSubtitle: string
+    ctaButton: string
   }
   // Common
   common: {
@@ -221,11 +272,11 @@ export const translations: Record<Language, Translations> = {
       },
       testimonials: {
         title: 'Lo que Dicen Nuestros Clientes',
-        subtitle: 'Testimonios reales de clientes satisfechos',
+        subtitle: 'Testimonios reales de clientes satisfechos en Miami',
       },
       blog: {
-        title: 'Últimos Artículos',
-        subtitle: 'Consejos y guías sobre limpieza profesional',
+        title: 'Últimos Artículos del Blog',
+        subtitle: 'Consejos y guías sobre limpieza profesional en Miami',
         readMore: 'Leer más',
         viewMore: 'Ver más artículos',
       },
@@ -242,6 +293,10 @@ export const translations: Record<Language, Translations> = {
     services: {
       title: 'Nuestros Servicios',
       subtitle: 'Servicios profesionales de limpieza para hogares y negocios en Miami',
+      pageTitle: 'Nuestros Servicios de Limpieza',
+      pageSubtitle: 'Soluciones profesionales para hogares y negocios en Miami',
+      notFound: '¿No encuentras el servicio que necesitas?',
+      notFoundDesc: 'Contáctanos y te ayudaremos a encontrar la solución perfecta para tus necesidades de limpieza.',
       requestQuote: 'Solicitar Cotización',
       talkWhatsApp: 'Hablar por WhatsApp',
       process: {
@@ -252,25 +307,54 @@ export const translations: Record<Language, Translations> = {
       features: 'Características',
       areas: 'Áreas de Servicio',
       ready: '¿Listo para Empezar?',
+      customQuote: 'Solicitar Cotización Personalizada',
     },
     about: {
       title: 'Sobre Nosotros',
       subtitle: 'Tu empresa de confianza para servicios de limpieza profesional en Miami',
       history: {
         title: 'Nuestra Historia',
+        paragraph1: 'Cleaning in Progress nació con la misión de proporcionar servicios de limpieza profesionales, confiables y de alta calidad para hogares y negocios en Miami.',
+        paragraph2: 'Somos una empresa local enfocada en la calidad, no en el volumen. Cada cliente es importante para nosotros y nos comprometemos a superar sus expectativas en cada servicio.',
+        paragraph3: 'Nuestro equipo está formado por profesionales capacitados y comprometidos con la excelencia, utilizando productos de calidad y técnicas probadas para garantizar resultados impecables.',
+        yearsExperience: 'Años de Experiencia',
+        yearsDescription: 'Servicio confiable desde nuestros inicios',
+        professionalTeam: 'Equipo Profesional',
+        teamDescription: 'Personal capacitado y certificado',
+        satisfiedClients: 'Clientes Satisfechos',
+        clientsDescription: '4.9+ de calificación promedio',
       },
       values: {
         title: 'Nuestros Valores',
         subtitle: 'Los principios que guían nuestro trabajo cada día',
+        trust: {
+          title: 'Confianza',
+          description: 'Empresa local con años de experiencia y clientes satisfechos.',
+        },
+        punctuality: {
+          title: 'Puntualidad',
+          description: 'Llegamos a tiempo, siempre respetando tus horarios y necesidades.',
+        },
+        quality: {
+          title: 'Calidad',
+          description: 'Estándares de limpieza profesional garantizados en cada servicio.',
+        },
+        professionalism: {
+          title: 'Profesionalismo',
+          description: 'Equipo capacitado y comprometido con la excelencia.',
+        },
       },
       mission: {
         title: 'Nuestra Misión',
+        description: 'Proporcionar servicios de limpieza profesionales, confiables y de alta calidad que superen las expectativas de nuestros clientes, creando espacios limpios y saludables para hogares y negocios en Miami.',
       },
       leadership: {
         title: 'Nuestro Liderazgo',
         subtitle: 'Conoce a quien está al frente de nuestra empresa',
         ceo: 'CEO & Fundadora',
         founder: 'CEO & Fundadora',
+        description1: 'es la fundadora y directora ejecutiva de Cleaning in Progress. Con una visión clara de excelencia y compromiso con la calidad, ha construido una empresa que se enfoca en superar las expectativas de cada cliente.',
+        description2: 'Su dedicación a la calidad y el servicio al cliente ha sido la base del éxito de nuestra empresa en Miami.',
       },
       cta: {
         title: '¿Listo para Trabajar con Nosotros?',
@@ -292,6 +376,14 @@ export const translations: Record<Language, Translations> = {
         selectService: 'Selecciona un servicio',
         send: 'Enviar Solicitud',
         sending: 'Enviando...',
+        validation: {
+          nameRequired: 'El nombre es requerido',
+          nameMinLength: 'El nombre debe tener al menos 2 caracteres',
+          phoneRequired: 'El teléfono es requerido',
+          phoneInvalid: 'Formato de teléfono inválido',
+          emailInvalid: 'Formato de email inválido',
+          validationError: 'Por favor, corrige los errores en el formulario.',
+        },
         success: {
           title: '¡Mensaje Enviado con Éxito!',
           message: 'Gracias por contactarnos. Hemos recibido tu solicitud y nos pondremos en contacto contigo en menos de 24 horas.',
@@ -313,17 +405,27 @@ export const translations: Record<Language, Translations> = {
     blog: {
       title: 'Blog',
       subtitle: 'Consejos y guías sobre limpieza profesional',
+      pageTitle: 'Blog de Limpieza Profesional',
+      pageSubtitle: 'Consejos, guías y noticias sobre limpieza en Miami',
+      allCategories: 'Todas',
+      noPosts: 'No hay artículos en esta categoría.',
       readMore: 'Leer más',
       backToBlog: 'Volver al Blog',
       share: 'Compartir',
     },
     testimonials: {
-      title: 'Testimonios',
-      subtitle: 'Lo que dicen nuestros clientes',
+      title: 'Lo que Dicen Nuestros Clientes',
+      subtitle: 'Testimonios reales de clientes satisfechos',
+      ctaTitle: '¿Quieres ser nuestro próximo cliente satisfecho?',
+      ctaSubtitle: 'Contáctanos hoy y descubre por qué nuestros clientes nos recomiendan.',
+      ctaButton: 'Solicitar Cotización',
     },
     faq: {
       title: 'Preguntas Frecuentes',
       subtitle: 'Respuestas a las preguntas más comunes sobre nuestros servicios',
+      ctaTitle: '¿Tienes otra pregunta?',
+      ctaSubtitle: 'No dudes en contactarnos. Estamos aquí para ayudarte con todas tus necesidades de limpieza.',
+      ctaButton: 'Contáctanos',
     },
     common: {
       loading: 'Cargando...',
@@ -400,6 +502,10 @@ export const translations: Record<Language, Translations> = {
     services: {
       title: 'Our Services',
       subtitle: 'Professional cleaning services for homes and businesses in Miami',
+      pageTitle: 'Our Cleaning Services',
+      pageSubtitle: 'Professional solutions for homes and businesses in Miami',
+      notFound: 'Can\'t find the service you need?',
+      notFoundDesc: 'Contact us and we\'ll help you find the perfect solution for your cleaning needs.',
       requestQuote: 'Request Quote',
       talkWhatsApp: 'Talk on WhatsApp',
       process: {
@@ -410,25 +516,54 @@ export const translations: Record<Language, Translations> = {
       features: 'Features',
       areas: 'Service Areas',
       ready: 'Ready to Get Started?',
+      customQuote: 'Request Custom Quote',
     },
     about: {
       title: 'About Us',
       subtitle: 'Your trusted company for professional cleaning services in Miami',
       history: {
         title: 'Our History',
+        paragraph1: 'Cleaning in Progress was born with the mission of providing professional, reliable and high-quality cleaning services for homes and businesses in Miami.',
+        paragraph2: 'We are a local company focused on quality, not volume. Every client is important to us and we are committed to exceeding their expectations in every service.',
+        paragraph3: 'Our team is made up of trained professionals committed to excellence, using quality products and proven techniques to guarantee impeccable results.',
+        yearsExperience: 'Years of Experience',
+        yearsDescription: 'Reliable service since our beginnings',
+        professionalTeam: 'Professional Team',
+        teamDescription: 'Trained and certified staff',
+        satisfiedClients: 'Satisfied Clients',
+        clientsDescription: '4.9+ average rating',
       },
       values: {
         title: 'Our Values',
         subtitle: 'The principles that guide our work every day',
+        trust: {
+          title: 'Trust',
+          description: 'Local company with years of experience and satisfied clients.',
+        },
+        punctuality: {
+          title: 'Punctuality',
+          description: 'We arrive on time, always respecting your schedules and needs.',
+        },
+        quality: {
+          title: 'Quality',
+          description: 'Professional cleaning standards guaranteed in every service.',
+        },
+        professionalism: {
+          title: 'Professionalism',
+          description: 'Trained team committed to excellence.',
+        },
       },
       mission: {
         title: 'Our Mission',
+        description: 'Provide professional, reliable and high-quality cleaning services that exceed our clients\' expectations, creating clean and healthy spaces for homes and businesses in Miami.',
       },
       leadership: {
         title: 'Our Leadership',
         subtitle: 'Meet who is at the forefront of our company',
         ceo: 'CEO & Founder',
         founder: 'CEO & Founder',
+        description1: 'is the founder and executive director of Cleaning in Progress. With a clear vision of excellence and commitment to quality, she has built a company that focuses on exceeding each client\'s expectations.',
+        description2: 'Her dedication to quality and customer service has been the foundation of our company\'s success in Miami.',
       },
       cta: {
         title: 'Ready to Work with Us?',
@@ -450,6 +585,14 @@ export const translations: Record<Language, Translations> = {
         selectService: 'Select a service',
         send: 'Send Request',
         sending: 'Sending...',
+        validation: {
+          nameRequired: 'Name is required',
+          nameMinLength: 'Name must be at least 2 characters',
+          phoneRequired: 'Phone is required',
+          phoneInvalid: 'Invalid phone format',
+          emailInvalid: 'Invalid email format',
+          validationError: 'Please correct the errors in the form.',
+        },
         success: {
           title: 'Message Sent Successfully!',
           message: 'Thank you for contacting us. We have received your request and will contact you within 24 hours.',
@@ -471,17 +614,27 @@ export const translations: Record<Language, Translations> = {
     blog: {
       title: 'Blog',
       subtitle: 'Tips and guides on professional cleaning',
+      pageTitle: 'Professional Cleaning Blog',
+      pageSubtitle: 'Tips, guides and news about cleaning in Miami',
+      allCategories: 'All',
+      noPosts: 'No articles in this category.',
       readMore: 'Read more',
       backToBlog: 'Back to Blog',
       share: 'Share',
     },
     testimonials: {
-      title: 'Testimonials',
-      subtitle: 'What our clients say',
+      title: 'What Our Clients Say',
+      subtitle: 'Real testimonials from satisfied clients',
+      ctaTitle: 'Want to be our next satisfied client?',
+      ctaSubtitle: 'Contact us today and discover why our clients recommend us.',
+      ctaButton: 'Request Quote',
     },
     faq: {
       title: 'Frequently Asked Questions',
       subtitle: 'Answers to the most common questions about our services',
+      ctaTitle: 'Have another question?',
+      ctaSubtitle: 'Don\'t hesitate to contact us. We are here to help you with all your cleaning needs.',
+      ctaButton: 'Contact Us',
     },
     common: {
       loading: 'Loading...',
