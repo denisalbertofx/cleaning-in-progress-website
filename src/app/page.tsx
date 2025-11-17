@@ -17,6 +17,7 @@ import {
 } from '@/components/ui/tooltip'
 import mockData from '@/data/mock-data.json'
 import { getWhatsAppUrl } from '@/lib/contact-info'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 // Lazy load componentes pesados para mejor rendimiento inicial
 const ScrollReveal = dynamic(() => import('@/components/ScrollReveal').then(mod => ({ default: mod.ScrollReveal })), {
@@ -29,6 +30,7 @@ const ImageLightbox = dynamic(() => import('@/components/ImageLightbox').then(mo
 })
 
 export default function Home() {
+  const { t } = useLanguage()
   const { services, blogPosts, testimonials, faqs } = mockData
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
@@ -73,18 +75,18 @@ export default function Home() {
             <div className="inline-flex items-center space-x-2 glass-strong px-4 sm:px-6 py-2.5 sm:py-3 rounded-full shadow-strong mb-4 sm:mb-6 animate-fade-in">
               <Star className="w-4 h-4 sm:w-5 sm:h-5 fill-[#00A884] text-[#00A884]" />
               <span className="text-xs sm:text-sm font-semibold text-white drop-shadow-md">
-                4.9+ en clientes verificados
+                4.9+ {t.home.hero.verifiedClients}
               </span>
             </div>
             
             {/* Main Headline - Mejorado para móvil 2025 */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.1] sm:leading-tight drop-shadow-lg px-2 animate-fade-in-up delay-200">
-              Limpieza Profesional en Miami
+              {t.home.hero.title}
             </h1>
             
             {/* Subheadline - Mejor legibilidad móvil */}
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 max-w-3xl mx-auto leading-relaxed text-readable drop-shadow-md px-4 animate-fade-in-up delay-400">
-              Servicio confiable, profesional y puntual. Limpieza garantizada con resultados verificables.
+              {t.home.hero.subtitle}
             </p>
             
             {/* CTA Buttons - Mejor spacing móvil */}
@@ -95,7 +97,7 @@ export default function Home() {
                        className="bg-[#0056A6] hover:bg-[#004494] text-white px-6 sm:px-8 md:px-10 py-5 sm:py-6 md:py-7 text-base sm:text-lg font-semibold shadow-strong hover:shadow-elevated transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto"
                      >
                        <Link href="/contacto">
-                         Solicitar Cotización
+                         {t.home.hero.ctaPrimary}
                        </Link>
                      </Button>
                      <Button
@@ -105,7 +107,7 @@ export default function Home() {
                      >
                        <Link href={getWhatsAppUrl('Hola, me gustaría solicitar información sobre sus servicios de limpieza.')} target="_blank" rel="noopener noreferrer">
                          <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                         Hablar por WhatsApp
+                         {t.home.hero.ctaSecondary}
                        </Link>
                      </Button>
             </div>
@@ -126,14 +128,13 @@ export default function Home() {
           <ScrollReveal>
             <div className="text-center mb-16">
               <div className="inline-block px-4 py-2 bg-[#0056A6]/10 rounded-full mb-4">
-                <span className="text-sm font-semibold text-[#0056A6]">NUESTROS SERVICIOS</span>
+                <span className="text-sm font-semibold text-[#0056A6]">{t.nav.services.toUpperCase()}</span>
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-4">
-                Soluciones Profesionales de Limpieza
+                {t.home.services.title}
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Soluciones de limpieza profesionales para hogares y negocios en Miami. 
-                Cada servicio diseñado para superar tus expectativas.
+                {t.home.services.subtitle}
               </p>
             </div>
           </ScrollReveal>
@@ -322,10 +323,10 @@ export default function Home() {
           <ScrollReveal>
             <div className="text-center mb-10 sm:mb-12">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-3 sm:mb-4 px-2">
-                Lo que Dicen Nuestros Clientes
+                {t.home.testimonials.title}
               </h2>
               <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto text-readable px-4">
-                Testimonios reales de clientes satisfechos en Miami
+                {t.home.testimonials.subtitle}
               </p>
             </div>
           </ScrollReveal>
@@ -351,10 +352,10 @@ export default function Home() {
           <ScrollReveal>
             <div className="text-center mb-10 sm:mb-12">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-3 sm:mb-4 px-2">
-                Últimos Artículos del Blog
+                {t.home.blog.title}
               </h2>
               <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto text-readable px-4">
-                Consejos y guías sobre limpieza profesional en Miami
+                {t.home.blog.subtitle}
               </p>
             </div>
           </ScrollReveal>
@@ -378,7 +379,7 @@ export default function Home() {
               variant="outline"
               className="border-[#0056A6] text-[#0056A6] hover:bg-[#0056A6] hover:text-white"
             >
-              <Link href="/blog">Ver más artículos</Link>
+              <Link href="/blog">{t.home.blog.viewMore}</Link>
             </Button>
           </div>
         </div>
@@ -390,10 +391,10 @@ export default function Home() {
           <ScrollReveal>
             <div className="text-center mb-10 sm:mb-12">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-3 sm:mb-4 px-2">
-                Preguntas Frecuentes
+                {t.home.faq.title}
               </h2>
               <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto text-readable px-4">
-                Respuestas a las preguntas más comunes sobre nuestros servicios
+                {t.home.faq.subtitle}
               </p>
             </div>
           </ScrollReveal>
@@ -418,10 +419,10 @@ export default function Home() {
       <section className="section-spacing bg-gradient-to-r from-[#0056A6] to-[#004494] text-white">
         <div className="container mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 px-2">
-            Solicita tu Limpieza Hoy
+            {t.home.cta.title}
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-white/95 mb-6 sm:mb-8 max-w-2xl mx-auto text-readable px-4">
-            Contáctanos ahora y obtén una cotización gratuita. Estamos listos para ayudarte.
+            {t.home.cta.subtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
             <Button
@@ -431,7 +432,7 @@ export default function Home() {
             >
               <Link href="/contacto">
                 <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                Solicitar Cotización
+                {t.home.cta.button}
               </Link>
             </Button>
             <Button
@@ -441,7 +442,7 @@ export default function Home() {
             >
               <Link href={getWhatsAppUrl('Hola, me gustaría solicitar información sobre sus servicios de limpieza.')} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                Hablar por WhatsApp
+                {t.home.hero.ctaSecondary}
               </Link>
             </Button>
           </div>
