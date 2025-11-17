@@ -1,22 +1,26 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import { Phone, Mail, MapPin, MessageCircle, Facebook } from 'lucide-react'
 import { getPhoneUrl, getEmailUrl, getWhatsAppUrl, contactInfo } from '@/lib/contact-info'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export function Footer() {
+  const { t } = useLanguage()
 
   const footerLinks = {
     servicios: [
-      { href: '/servicios/limpieza-residencial-miami', label: 'Limpieza Residencial' },
-      { href: '/servicios/limpieza-comercial-miami', label: 'Limpieza Comercial' },
-      { href: '/servicios/limpieza-post-construccion-miami', label: 'Post-Construcción' },
-      { href: '/servicios/limpieza-de-alfombras-miami', label: 'Limpieza de Alfombras' },
+      { href: '/servicios/limpieza-residencial-miami', label: t.footer.services.residential },
+      { href: '/servicios/limpieza-comercial-miami', label: t.footer.services.commercial },
+      { href: '/servicios/limpieza-post-construccion-miami', label: t.footer.services.postConstruction },
+      { href: '/servicios/limpieza-de-alfombras-miami', label: t.footer.services.carpets },
     ],
     empresa: [
-      { href: '/nosotros', label: 'Sobre Nosotros' },
-      { href: '/testimonios', label: 'Testimonios' },
-      { href: '/blog', label: 'Blog' },
-      { href: '/preguntas-frecuentes', label: 'Preguntas Frecuentes' },
+      { href: '/nosotros', label: t.nav.about },
+      { href: '/testimonios', label: t.nav.testimonials },
+      { href: '/blog', label: t.nav.blog },
+      { href: '/preguntas-frecuentes', label: t.faq.title },
     ],
   }
 
@@ -39,14 +43,14 @@ export function Footer() {
               </Link>
             </div>
             <p className="text-gray-300 mb-4 leading-relaxed">
-              Servicios profesionales de limpieza en Miami. Confianza, calidad y resultados garantizados.
+              {t.footer.description}
             </p>
             <div className="space-y-2 text-sm text-gray-300">
               <div className="flex items-start space-x-2">
                 <MapPin className="w-4 h-4 text-[#00A884] flex-shrink-0 mt-0.5" />
                 <div>
-                  <span className="text-gray-300 font-medium">Servicio Móvil en Miami</span>
-                  <p className="text-xs text-gray-400 mt-1">Atendemos toda el área metropolitana</p>
+                  <span className="text-gray-300 font-medium">{t.footer.mobileService}</span>
+                  <p className="text-xs text-gray-400 mt-1">{t.footer.serviceArea}</p>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
@@ -69,10 +73,10 @@ export function Footer() {
 
           {/* Columna 2: Navegación */}
           <div>
-            <h3 className="font-semibold text-lg mb-4 text-white">Navegación</h3>
+            <h3 className="font-semibold text-lg mb-4 text-white">{t.footer.navigation}</h3>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <h4 className="text-sm font-medium text-gray-300 mb-2">Servicios</h4>
+                <h4 className="text-sm font-medium text-gray-300 mb-2">{t.nav.services}</h4>
                 <ul className="space-y-2">
                   {footerLinks.servicios.map((link) => (
                     <li key={link.href}>
@@ -87,7 +91,7 @@ export function Footer() {
                 </ul>
               </div>
               <div>
-                <h4 className="text-sm font-medium text-gray-300 mb-2">Empresa</h4>
+                <h4 className="text-sm font-medium text-gray-300 mb-2">{t.footer.company}</h4>
                 <ul className="space-y-2">
                   {footerLinks.empresa.map((link) => (
                     <li key={link.href}>
@@ -106,7 +110,7 @@ export function Footer() {
 
           {/* Columna 3: Áreas de Servicio / Google Maps */}
           <div>
-            <h3 className="font-semibold text-lg mb-4 text-white">Áreas de Servicio</h3>
+            <h3 className="font-semibold text-lg mb-4 text-white">{t.footer.serviceAreas}</h3>
             {/* Google Maps Embed */}
             <div className="mb-4 rounded-lg overflow-hidden shadow-lg border border-gray-700">
               <iframe
@@ -144,7 +148,7 @@ export function Footer() {
                 className="inline-flex items-center text-sm text-[#00A884] hover:text-[#00A884]/80 transition-colors"
               >
                 <MapPin className="w-4 h-4 mr-1" />
-                Ver en Google Maps
+                {t.footer.viewOnGoogleMaps}
               </a>
             </div>
             <a
@@ -154,7 +158,7 @@ export function Footer() {
               className="inline-flex items-center justify-center space-x-2 bg-[#00A884] hover:bg-[#008f6f] text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 w-full"
             >
               <MessageCircle className="w-5 h-5" />
-              <span>Hablar por WhatsApp</span>
+              <span>{t.footer.talkOnWhatsApp}</span>
             </a>
           </div>
         </div>
@@ -163,10 +167,10 @@ export function Footer() {
         <div className="border-t border-gray-800 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-gray-300">
-              © {new Date().getFullYear()} Cleaning in Progress. Todos los derechos reservados.
+              © {new Date().getFullYear()} Cleaning in Progress. {t.footer.rights}
             </p>
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-300">Síguenos en redes sociales</span>
+              <span className="text-sm text-gray-300">{t.footer.followUs}</span>
               <a
                 href={contactInfo.facebookUrl}
                 target="_blank"

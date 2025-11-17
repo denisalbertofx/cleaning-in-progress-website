@@ -63,3 +63,4 @@ Si aún experimentas problemas de carga, verifica:
 4. Limpia la caché del navegador (Cmd+Shift+R en Mac)
 
 
+

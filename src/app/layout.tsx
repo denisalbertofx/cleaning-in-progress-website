@@ -7,6 +7,7 @@ import { FloatingCTA } from '@/components/FloatingCTA'
 import { BackToTop } from '@/components/BackToTop'
 import { Toaster } from '@/components/ui/toaster'
 import { TooltipProvider } from '@/components/ui/tooltip'
+import { LanguageProvider } from '@/contexts/LanguageContext'
 import { generateMetadata as generateSEOMetadata } from '@/lib/seo'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -31,16 +32,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
       <body className={inter.className}>
-        <TooltipProvider>
-          <Header />
-          <main className="pt-20">{children}</main>
-          <Footer />
-          <FloatingCTA />
-          <BackToTop />
-          <Toaster />
-        </TooltipProvider>
+        <LanguageProvider>
+          <TooltipProvider>
+            <Header />
+            <main className="pt-20">{children}</main>
+            <Footer />
+            <FloatingCTA />
+            <BackToTop />
+            <Toaster />
+          </TooltipProvider>
+        </LanguageProvider>
       </body>
     </html>
   )

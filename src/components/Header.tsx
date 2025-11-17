@@ -3,11 +3,14 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
-import { Menu, X, Phone, MessageCircle } from 'lucide-react'
+import { Menu, X, Phone } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 
 export function Header() {
+  const { t } = useLanguage()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -20,12 +23,12 @@ export function Header() {
   }, [])
 
   const navItems = [
-    { href: '/', label: 'Inicio' },
-    { href: '/servicios', label: 'Servicios' },
-    { href: '/nosotros', label: 'Nosotros' },
-    { href: '/blog', label: 'Blog' },
-    { href: '/testimonios', label: 'Testimonios' },
-    { href: '/contacto', label: 'Contacto' },
+    { href: '/', label: t.nav.home },
+    { href: '/servicios', label: t.nav.services },
+    { href: '/nosotros', label: t.nav.about },
+    { href: '/blog', label: t.nav.blog },
+    { href: '/testimonios', label: t.nav.testimonials },
+    { href: '/contacto', label: t.nav.contact },
   ]
 
   return (
@@ -66,13 +69,14 @@ export function Header() {
 
           {/* CTA Button Desktop */}
           <div className="hidden md:flex items-center space-x-4">
+            <LanguageSwitcher />
             <Button
               asChild
               className="bg-[#0056A6] hover:bg-[#004494] text-white font-semibold shadow-md hover:shadow-lg transition-all duration-300 px-6 py-2"
             >
               <Link href="/contacto">
                 <Phone className="w-4 h-4 mr-2" />
-                Solicitar Cotización
+                {t.header.requestQuote}
               </Link>
             </Button>
           </div>
@@ -105,13 +109,16 @@ export function Header() {
                   {item.label}
                 </Link>
               ))}
+              <div className="flex items-center justify-between pt-2">
+                <LanguageSwitcher />
+              </div>
               <Button
                 asChild
                 className="bg-[#0056A6] hover:bg-[#004494] text-white font-semibold shadow-md hover:shadow-lg transition-all duration-300 mt-4 w-full"
               >
                 <Link href="/contacto">
                   <Phone className="w-4 h-4 mr-2" />
-                  Solicitar Cotización
+                  {t.header.requestQuote}
                 </Link>
               </Button>
             </nav>
