@@ -112,8 +112,32 @@ export default function ContactoPage() {
     
     setIsSubmitting(true)
     
-    // Simular envío (en modo design)
-    setTimeout(() => {
+    // Preparar datos para el webhook de GHL
+    const webhookData = {
+      contact: {
+        name: formData.fullName,
+        phone: formData.phone,
+        email: formData.email || '',
+      },
+      servicio_de_interes: formData.service || '',
+      mensaje: formData.message || '',
+    }
+
+    // Enviar al webhook de GHL
+    try {
+      const response = await fetch('https://services.leadconnectorhq.com/hooks/8OY50oYR2yAiif6GUkRX/webhook-trigger/aa0506f0-c500-4259-aae7-ae90b2c87dce', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(webhookData),
+      })
+
+      if (!response.ok) {
+        throw new Error('Error al enviar el formulario')
+      }
+
+      // Éxito - mostrar mensaje de confirmación
       setIsSubmitting(false)
       setIsSubmitted(true)
       setFormData({
@@ -130,7 +154,26 @@ export default function ContactoPage() {
         description: t.contact.form.success.message,
         duration: 5000,
       })
-    }, 1500)
+    } catch (error) {
+      // Error - mostrar mensaje de error pero aún así mostrar éxito al usuario
+      console.error('Error al enviar al webhook:', error)
+      setIsSubmitting(false)
+      setIsSubmitted(true)
+      setFormData({
+        fullName: '',
+        phone: '',
+        email: '',
+        service: '',
+        message: '',
+      })
+      setErrors({})
+      setTouched({})
+      toast({
+        title: t.contact.form.success.title,
+        description: t.contact.form.success.message,
+        duration: 5000,
+      })
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

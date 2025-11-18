@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 interface ServiceCardProps {
   title: string
@@ -17,6 +18,7 @@ interface ServiceCardProps {
 }
 
 export function ServiceCard({ title, slug, description, icon, iconFile, features }: ServiceCardProps) {
+  const { t } = useLanguage()
   const iconPath = iconFile ? `/images/icons/${iconFile}` : null
 
   return (
@@ -69,7 +71,7 @@ export function ServiceCard({ title, slug, description, icon, iconFile, features
           className="w-full border-2 border-[#0056A6] text-[#0056A6] hover:bg-[#0056A6] hover:text-white font-semibold group-hover:shadow-medium transition-all text-sm sm:text-base"
         >
           <Link href={`/servicios/${slug}`} className="flex items-center justify-center">
-            Ver servicio
+            {t.services.viewService}
             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
           </Link>
         </Button>

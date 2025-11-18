@@ -82,10 +82,21 @@ export interface Translations {
     notFoundDesc: string
     requestQuote: string
     talkWhatsApp: string
+    viewService: string
+    whatIncludes: string
+    ourProcess: string
+    areasCovered: string
+    getQuote: string
+    getQuoteDesc: string
+    readyToStart: string
+    readyToStartDesc: string
     process: {
       step1: string
+      step1Desc: string
       step2: string
+      step2Desc: string
       step3: string
+      step3Desc: string
     }
     features: string
     areas: string
@@ -299,10 +310,21 @@ export const translations: Record<Language, Translations> = {
       notFoundDesc: 'Contáctanos y te ayudaremos a encontrar la solución perfecta para tus necesidades de limpieza.',
       requestQuote: 'Solicitar Cotización',
       talkWhatsApp: 'Hablar por WhatsApp',
+      viewService: 'Ver servicio',
+      whatIncludes: '¿Qué incluye este servicio?',
+      ourProcess: 'Nuestro Proceso',
+      areasCovered: 'Áreas que Cubrimos',
+      getQuote: 'Solicita tu Cotización',
+      getQuoteDesc: 'Obtén una cotización gratuita y personalizada para este servicio.',
+      readyToStart: '¿Listo para Empezar?',
+      readyToStartDesc: 'Contáctanos ahora y obtén una cotización gratuita para',
       process: {
         step1: 'Solicita tu Cotización',
+        step1Desc: 'Completa nuestro formulario o contáctanos por teléfono/WhatsApp. Te responderemos en menos de 24 horas.',
         step2: 'Programamos la Visita',
+        step2Desc: 'Coordinamos una fecha y hora que se ajuste a tu disponibilidad. Llegamos puntualmente.',
         step3: 'Realizamos el Servicio',
+        step3Desc: 'Nuestro equipo profesional ejecuta el trabajo con los más altos estándares de calidad.',
       },
       features: 'Características',
       areas: 'Áreas de Servicio',
@@ -508,10 +530,21 @@ export const translations: Record<Language, Translations> = {
       notFoundDesc: 'Contact us and we\'ll help you find the perfect solution for your cleaning needs.',
       requestQuote: 'Request Quote',
       talkWhatsApp: 'Talk on WhatsApp',
+      viewService: 'View service',
+      whatIncludes: 'What does this service include?',
+      ourProcess: 'Our Process',
+      areasCovered: 'Areas We Cover',
+      getQuote: 'Request Your Quote',
+      getQuoteDesc: 'Get a free and personalized quote for this service.',
+      readyToStart: 'Ready to Get Started?',
+      readyToStartDesc: 'Contact us now and get a free quote for',
       process: {
         step1: 'Request Your Quote',
+        step1Desc: 'Complete our form or contact us by phone/WhatsApp. We will respond within 24 hours.',
         step2: 'We Schedule the Visit',
+        step2Desc: 'We coordinate a date and time that fits your availability. We arrive on time.',
         step3: 'We Perform the Service',
+        step3Desc: 'Our professional team executes the work with the highest quality standards.',
       },
       features: 'Features',
       areas: 'Service Areas',
