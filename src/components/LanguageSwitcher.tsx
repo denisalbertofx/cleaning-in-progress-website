@@ -5,6 +5,7 @@ import { Globe, Check } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { Language } from '@/lib/i18n/translations'
 import { cn } from '@/lib/utils'
+import { trackLanguageChange } from '@/components/GoogleAnalytics'
 
 const languages: { code: Language; name: string; flag: string }[] = [
   { code: 'es', name: 'Español', flag: '🇪🇸' },
@@ -35,10 +36,11 @@ export function LanguageSwitcher() {
 
   const currentLanguage = languages.find((lang) => lang.code === language) || languages[0]
 
-  const handleLanguageChange = (lang: Language) => {
-    setLanguage(lang)
-    setIsOpen(false)
-  }
+      const handleLanguageChange = (lang: Language) => {
+        setLanguage(lang)
+        setIsOpen(false)
+        trackLanguageChange(lang)
+      }
 
   return (
     <div className="relative" ref={dropdownRef}>

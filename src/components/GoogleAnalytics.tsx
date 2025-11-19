@@ -56,6 +56,42 @@ export function trackFormSubmission(formData: {
   })
 }
 
+// Función helper para trackear clicks en WhatsApp
+export function trackWhatsAppClick(location: string) {
+  trackEvent('whatsapp_click', {
+    event_category: 'Contact',
+    event_label: 'WhatsApp Click',
+    location: location, // 'header', 'footer', 'floating', 'service_page', etc.
+  })
+}
+
+// Función helper para trackear clicks en teléfono
+export function trackPhoneClick(location: string) {
+  trackEvent('phone_click', {
+    event_category: 'Contact',
+    event_label: 'Phone Click',
+    location: location,
+  })
+}
+
+// Función helper para trackear clicks en botones de cotización
+export function trackQuoteButtonClick(location: string) {
+  trackEvent('quote_button_click', {
+    event_category: 'Conversion',
+    event_label: 'Request Quote Button',
+    location: location,
+  })
+}
+
+// Función helper para trackear cambio de idioma
+export function trackLanguageChange(language: string) {
+  trackEvent('language_change', {
+    event_category: 'User Interaction',
+    event_label: 'Language Switched',
+    language: language,
+  })
+}
+
 // Extender el tipo Window para incluir gtag
 declare global {
   interface Window {

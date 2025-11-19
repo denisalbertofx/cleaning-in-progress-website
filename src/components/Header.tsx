@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { LanguageSwitcher } from '@/components/LanguageSwitcher'
+import { trackQuoteButtonClick } from '@/components/GoogleAnalytics'
 
 export function Header() {
   const { t } = useLanguage()
@@ -74,7 +75,7 @@ export function Header() {
               asChild
               className="bg-[#0056A6] hover:bg-[#004494] text-white font-semibold shadow-md hover:shadow-lg transition-all duration-300 px-6 py-2"
             >
-              <Link href="/contacto">
+              <Link href="/contacto" onClick={() => trackQuoteButtonClick('header_desktop')}>
                 <Phone className="w-4 h-4 mr-2" />
                 {t.header.requestQuote}
               </Link>
@@ -116,7 +117,7 @@ export function Header() {
                 asChild
                 className="bg-[#0056A6] hover:bg-[#004494] text-white font-semibold shadow-md hover:shadow-lg transition-all duration-300 mt-4 w-full"
               >
-                <Link href="/contacto">
+                <Link href="/contacto" onClick={() => trackQuoteButtonClick('header_mobile')}>
                   <Phone className="w-4 h-4 mr-2" />
                   {t.header.requestQuote}
                 </Link>

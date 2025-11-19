@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Phone, Mail, MapPin, MessageCircle, Facebook } from 'lucide-react'
 import { getPhoneUrl, getEmailUrl, getWhatsAppUrl, contactInfo } from '@/lib/contact-info'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { trackWhatsAppClick, trackPhoneClick } from '@/components/GoogleAnalytics'
 
 export function Footer() {
   const { t } = useLanguage()
@@ -55,7 +56,7 @@ export function Footer() {
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4 text-[#00A884] flex-shrink-0" />
-                <a href={getPhoneUrl()} className="text-gray-300 hover:text-white transition-colors font-medium">
+                <a href={getPhoneUrl()} onClick={() => trackPhoneClick('footer')} className="text-gray-300 hover:text-white transition-colors font-medium">
                   {contactInfo.phone}
                 </a>
               </div>
@@ -155,6 +156,7 @@ export function Footer() {
               href={getWhatsAppUrl('Hola, me gustaría solicitar información sobre sus servicios de limpieza.')}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('footer')}
               className="inline-flex items-center justify-center space-x-2 bg-[#00A884] hover:bg-[#008f6f] text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300 w-full"
             >
               <MessageCircle className="w-5 h-5" />

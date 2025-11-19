@@ -3,6 +3,7 @@
 import { MessageCircle, Phone } from 'lucide-react'
 import Link from 'next/link'
 import { getWhatsAppUrl, getPhoneUrl } from '@/lib/contact-info'
+import { trackWhatsAppClick, trackPhoneClick } from '@/components/GoogleAnalytics'
 
 export function FloatingCTA() {
   return (
@@ -13,6 +14,7 @@ export function FloatingCTA() {
           href={getWhatsAppUrl('Hola, me gustaría solicitar información sobre sus servicios de limpieza.')}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackWhatsAppClick('floating')}
           className="bg-[#00A884] hover:bg-[#008f6f] text-white rounded-full p-4 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center"
           aria-label="Contactar por WhatsApp"
         >
@@ -22,6 +24,7 @@ export function FloatingCTA() {
         {/* Phone Button */}
         <Link
           href={getPhoneUrl()}
+          onClick={() => trackPhoneClick('floating')}
           className="bg-[#0056A6] hover:bg-[#004494] text-white rounded-full p-4 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center"
           aria-label="Llamar"
         >
