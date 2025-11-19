@@ -36,9 +36,9 @@ export function Footer() {
                 <Image
                   src="/images/logo/logo-cleaning-in-progress.png"
                   alt="Cleaning in Progress Logo"
-                  width={200}
-                  height={60}
-                  className="object-contain h-12 w-auto"
+                  width={280}
+                  height={84}
+                  className="object-contain h-16 md:h-20 w-auto"
                   priority
                 />
               </Link>
