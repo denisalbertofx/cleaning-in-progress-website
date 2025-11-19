@@ -25,6 +25,7 @@ import mockData from '@/data/mock-data.json'
 
 import { getWhatsAppUrl, getPhoneUrl, getEmailUrl, contactInfo } from '@/lib/contact-info'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { trackFormSubmission } from '@/components/GoogleAnalytics'
 
 export default function ContactoPage() {
   const { t } = useLanguage()
@@ -137,6 +138,12 @@ export default function ContactoPage() {
         throw new Error('Error al enviar el formulario')
       }
 
+      // Trackear evento de conversión en Google Analytics
+      trackFormSubmission({
+        service: formData.service,
+        hasMessage: !!formData.message,
+      })
+
       // Éxito - mostrar mensaje de confirmación
       setIsSubmitting(false)
       setIsSubmitted(true)
@@ -157,6 +164,14 @@ export default function ContactoPage() {
     } catch (error) {
       // Error - mostrar mensaje de error pero aún así mostrar éxito al usuario
       console.error('Error al enviar al webhook:', error)
+      
+      // Trackear evento de conversión incluso si hay error en el webhook
+      // (el usuario completó el formulario exitosamente)
+      trackFormSubmission({
+        service: formData.service,
+        hasMessage: !!formData.message,
+      })
+      
       setIsSubmitting(false)
       setIsSubmitted(true)
       setFormData({

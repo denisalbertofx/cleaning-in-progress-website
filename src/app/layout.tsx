@@ -8,6 +8,7 @@ import { BackToTop } from '@/components/BackToTop'
 import { Toaster } from '@/components/ui/toaster'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import { LanguageProvider } from '@/contexts/LanguageContext'
+import { GoogleAnalytics } from '@/components/GoogleAnalytics'
 import { generateMetadata as generateSEOMetadata } from '@/lib/seo'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -34,6 +35,7 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body className={inter.className}>
+        <GoogleAnalytics />
         <LanguageProvider>
           <TooltipProvider>
             <Header />
