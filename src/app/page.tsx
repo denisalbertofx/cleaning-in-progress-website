@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { ServiceCard } from '@/features/services/ServiceCard'
 import { BlogCard } from '@/features/blog/BlogCard'
-import { TestimonialCard } from '@/features/testimonials/TestimonialCard'
+import { GoogleReviewsWidget } from '@/components/GoogleReviewsWidget'
 import {
   Tooltip,
   TooltipContent,
@@ -31,7 +31,7 @@ const ImageLightbox = dynamic(() => import('@/components/ImageLightbox').then(mo
 
 export default function Home() {
   const { t } = useLanguage()
-  const { services, blogPosts, testimonials, faqs } = mockData
+  const { services, blogPosts, faqs } = mockData
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
   
@@ -317,7 +317,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonios - Mejorado móvil 2025 */}
+      {/* Testimonios - Reviews Reales de Google My Business */}
       <section className="section-spacing bg-white">
         <div className="container mx-auto px-4 sm:px-6">
           <ScrollReveal>
@@ -330,18 +330,8 @@ export default function Home() {
               </p>
             </div>
           </ScrollReveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-            {testimonials.map((testimonial) => (
-              <TestimonialCard
-                key={testimonial.id}
-                name={testimonial.name}
-                location={testimonial.location}
-                rating={testimonial.rating}
-                text={testimonial.text}
-                service={testimonial.service}
-                photo={testimonial.photo}
-              />
-            ))}
+          <div className="max-w-6xl mx-auto">
+            <GoogleReviewsWidget />
           </div>
         </div>
       </section>

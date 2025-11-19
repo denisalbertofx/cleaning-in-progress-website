@@ -27,7 +27,6 @@ export async function generateMetadata({ params }: ServicePageProps) {
 
 export default function ServiceDetailPage({ params }: ServicePageProps) {
   const service = mockData.services.find((s) => s.slug === params.slug)
-  const { testimonials } = mockData
 
   if (!service) {
     notFound()
@@ -35,18 +34,13 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
 
   const serviceSchema = generateServiceSchema(service)
 
-  // Filtrar testimonios relacionados con este servicio
-  const relatedTestimonials = testimonials.filter(
-    (testimonial) => testimonial.service === service.title
-  )
-
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
-      <ServiceDetailContent service={service} relatedTestimonials={relatedTestimonials} />
+      <ServiceDetailContent service={service} relatedTestimonials={[]} />
     </>
   )
 }

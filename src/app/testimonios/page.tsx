@@ -1,28 +1,13 @@
 'use client'
 
-import { TestimonialCard } from '@/features/testimonials/TestimonialCard'
-import { generateMetadata as generateSEOMetadata, generateReviewSchema } from '@/lib/seo'
-import mockData from '@/data/mock-data.json'
+import { GoogleReviewsWidget } from '@/components/GoogleReviewsWidget'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function TestimoniosPage() {
   const { t } = useLanguage()
-  const { testimonials } = mockData
-  const reviewSchema = generateReviewSchema(
-    testimonials.map((testimonial) => ({
-      name: testimonial.name,
-      text: testimonial.text,
-      rating: testimonial.rating,
-    }))
-  )
 
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
-      />
-      <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
       {/* Hero Section - Mejorado móvil 2025 */}
       <section className="section-spacing bg-gradient-to-br from-[#F7F9FA] to-white">
         <div className="container mx-auto px-4 sm:px-6">
@@ -37,21 +22,11 @@ export default function TestimoniosPage() {
         </div>
       </section>
 
-      {/* Testimonials Grid - Mejorado móvil 2025 */}
+      {/* Google Reviews Widget - Reviews Reales */}
       <section className="section-spacing">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-            {testimonials.map((testimonial) => (
-              <TestimonialCard
-                key={testimonial.id}
-                name={testimonial.name}
-                location={testimonial.location}
-                rating={testimonial.rating}
-                text={testimonial.text}
-                service={testimonial.service}
-                photo={testimonial.photo}
-              />
-            ))}
+          <div className="max-w-6xl mx-auto">
+            <GoogleReviewsWidget />
           </div>
         </div>
       </section>
@@ -73,8 +48,7 @@ export default function TestimoniosPage() {
           </a>
         </div>
       </section>
-      </div>
-    </>
+    </div>
   )
 }
 

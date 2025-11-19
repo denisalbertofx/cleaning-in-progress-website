@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { CheckCircle, MapPin, Phone, MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
-import { TestimonialCard } from '@/features/testimonials/TestimonialCard'
+import { GoogleReviewsWidget } from '@/components/GoogleReviewsWidget'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { ScrollReveal } from '@/components/ScrollReveal'
 import { getWhatsAppUrl, contactInfo } from '@/lib/contact-info'
@@ -212,29 +212,17 @@ export function ServiceDetailContent({ service, relatedTestimonials }: ServiceDe
         </div>
       </section>
 
-            {/* Testimonios Relacionados - Mejorado móvil 2025 */}
-            {relatedTestimonials.length > 0 && (
-              <section className="section-spacing bg-[#F7F9FA]">
-                <div className="container mx-auto px-4 sm:px-6">
-                  <h2 className="text-2xl sm:text-3xl font-bold text-[#1A1A1A] mb-6 sm:mb-8 text-center px-2">
-                    {t.testimonials.title}
-                  </h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-              {relatedTestimonials.map((testimonial) => (
-                <TestimonialCard
-                  key={testimonial.id}
-                  name={testimonial.name}
-                  location={testimonial.location}
-                  rating={testimonial.rating}
-                  text={testimonial.text}
-                  service={testimonial.service}
-                  photo={testimonial.photo}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+            {/* Reviews de Google My Business - Mejorado móvil 2025 */}
+            <section className="section-spacing bg-[#F7F9FA]">
+              <div className="container mx-auto px-4 sm:px-6">
+                <h2 className="text-2xl sm:text-3xl font-bold text-[#1A1A1A] mb-6 sm:mb-8 text-center px-2">
+                  {t.testimonials.title}
+                </h2>
+                <div className="max-w-6xl mx-auto">
+                  <GoogleReviewsWidget />
+                </div>
+              </div>
+            </section>
 
       {/* CTA Final - Mejorado móvil 2025 */}
       <section className="section-spacing bg-gradient-to-r from-[#0056A6] to-[#004494] text-white">
