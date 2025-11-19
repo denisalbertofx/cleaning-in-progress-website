@@ -18,6 +18,7 @@ import {
 import mockData from '@/data/mock-data.json'
 import { getWhatsAppUrl } from '@/lib/contact-info'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { getTranslatedServices } from '@/lib/services-translations'
 
 // Lazy load componentes pesados para mejor rendimiento inicial
 const ScrollReveal = dynamic(() => import('@/components/ScrollReveal').then(mod => ({ default: mod.ScrollReveal })), {
@@ -30,8 +31,9 @@ const ImageLightbox = dynamic(() => import('@/components/ImageLightbox').then(mo
 })
 
 export default function Home() {
-  const { t } = useLanguage()
-  const { services, blogPosts, faqs } = mockData
+  const { t, language } = useLanguage()
+  const services = getTranslatedServices(language)
+  const { blogPosts, faqs } = mockData
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
   

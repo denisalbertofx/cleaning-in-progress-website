@@ -102,6 +102,38 @@ export interface Translations {
     areas: string
     ready: string
     customQuote: string
+    list: {
+      residential: {
+        title: string
+        description: string
+        features: string[]
+      }
+      commercial: {
+        title: string
+        description: string
+        features: string[]
+      }
+      office: {
+        title: string
+        description: string
+        features: string[]
+      }
+      deep: {
+        title: string
+        description: string
+        features: string[]
+      }
+      postConstruction: {
+        title: string
+        description: string
+        features: string[]
+      }
+      carpets: {
+        title: string
+        description: string
+        features: string[]
+      }
+    }
   }
   // Nosotros
   about: {
@@ -330,6 +362,68 @@ export const translations: Record<Language, Translations> = {
       areas: 'Áreas de Servicio',
       ready: '¿Listo para Empezar?',
       customQuote: 'Solicitar Cotización Personalizada',
+      list: {
+        residential: {
+          title: 'Limpieza Residencial',
+          description: 'Servicio completo de limpieza para hogares en Miami',
+          features: [
+            'Limpieza profunda de todas las habitaciones',
+            'Aseo de baños y cocinas',
+            'Aspirado y trapeado de pisos',
+            'Limpieza de ventanas y espejos',
+          ],
+        },
+        commercial: {
+          title: 'Limpieza Comercial',
+          description: 'Mantenimiento profesional para oficinas y locales comerciales',
+          features: [
+            'Limpieza diaria, semanal o mensual',
+            'Aseo de baños y áreas comunes',
+            'Limpieza de escritorios y equipos',
+            'Recolección de basura y reciclaje',
+          ],
+        },
+        office: {
+          title: 'Limpieza de Oficinas',
+          description: 'Servicio especializado para oficinas y espacios de trabajo',
+          features: [
+            'Limpieza de escritorios y equipos',
+            'Aseo de áreas comunes y salas de reunión',
+            'Mantenimiento de baños y cocinas',
+            'Servicio flexible según horarios',
+          ],
+        },
+        deep: {
+          title: 'Limpieza Profunda',
+          description: 'Limpieza exhaustiva y detallada para espacios que requieren atención especial',
+          features: [
+            'Limpieza detallada de cada rincón',
+            'Desinfección profunda de superficies',
+            'Limpieza de áreas de difícil acceso',
+            'Resultados impecables garantizados',
+          ],
+        },
+        postConstruction: {
+          title: 'Limpieza Post-Construcción',
+          description: 'Limpieza profunda después de obras y remodelaciones',
+          features: [
+            'Eliminación de polvo y residuos',
+            'Limpieza de ventanas y vidrios',
+            'Aseo completo de todas las áreas',
+            'Preparación para entrega',
+          ],
+        },
+        carpets: {
+          title: 'Limpieza de Alfombras',
+          description: 'Servicio especializado de limpieza y mantenimiento de alfombras',
+          features: [
+            'Limpieza profunda con vapor',
+            'Eliminación de manchas y olores',
+            'Desinfección y sanitización',
+            'Secado rápido',
+          ],
+        },
+      },
     },
     about: {
       title: 'Sobre Nosotros',
@@ -550,6 +644,68 @@ export const translations: Record<Language, Translations> = {
       areas: 'Service Areas',
       ready: 'Ready to Get Started?',
       customQuote: 'Request Custom Quote',
+      list: {
+        residential: {
+          title: 'Residential Cleaning',
+          description: 'Complete cleaning service for homes in Miami',
+          features: [
+            'Deep cleaning of all rooms',
+            'Bathroom and kitchen cleaning',
+            'Vacuuming and mopping floors',
+            'Window and mirror cleaning',
+          ],
+        },
+        commercial: {
+          title: 'Commercial Cleaning',
+          description: 'Professional maintenance for offices and commercial premises',
+          features: [
+            'Daily, weekly or monthly cleaning',
+            'Bathroom and common area cleaning',
+            'Desk and equipment cleaning',
+            'Garbage collection and recycling',
+          ],
+        },
+        office: {
+          title: 'Office Cleaning',
+          description: 'Specialized service for offices and workspaces',
+          features: [
+            'Desk and equipment cleaning',
+            'Common areas and meeting room cleaning',
+            'Bathroom and kitchen maintenance',
+            'Flexible service according to schedules',
+          ],
+        },
+        deep: {
+          title: 'Deep Cleaning',
+          description: 'Exhaustive and detailed cleaning for spaces requiring special attention',
+          features: [
+            'Detailed cleaning of every corner',
+            'Deep surface disinfection',
+            'Hard-to-reach area cleaning',
+            'Impeccable results guaranteed',
+          ],
+        },
+        postConstruction: {
+          title: 'Post-Construction Cleaning',
+          description: 'Deep cleaning after construction and renovations',
+          features: [
+            'Dust and debris removal',
+            'Window and glass cleaning',
+            'Complete cleaning of all areas',
+            'Preparation for handover',
+          ],
+        },
+        carpets: {
+          title: 'Carpet Cleaning',
+          description: 'Specialized carpet cleaning and maintenance service',
+          features: [
+            'Deep steam cleaning',
+            'Stain and odor removal',
+            'Disinfection and sanitization',
+            'Quick drying',
+          ],
+        },
+      },
     },
     about: {
       title: 'About Us',

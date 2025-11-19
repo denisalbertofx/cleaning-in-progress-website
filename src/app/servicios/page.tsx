@@ -3,12 +3,12 @@
 import Image from 'next/image'
 import { ServiceCard } from '@/features/services/ServiceCard'
 import { ScrollReveal } from '@/components/ScrollReveal'
-import mockData from '@/data/mock-data.json'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { getTranslatedServices } from '@/lib/services-translations'
 
 export default function ServiciosPage() {
-  const { t } = useLanguage()
-  const { services } = mockData
+  const { t, language } = useLanguage()
+  const services = getTranslatedServices(language)
 
   return (
     <div className="min-h-screen bg-white">

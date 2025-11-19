@@ -26,10 +26,11 @@ import mockData from '@/data/mock-data.json'
 import { getWhatsAppUrl, getPhoneUrl, getEmailUrl, contactInfo } from '@/lib/contact-info'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { trackFormSubmission } from '@/components/GoogleAnalytics'
+import { getTranslatedServices } from '@/lib/services-translations'
 
 export default function ContactoPage() {
-  const { t } = useLanguage()
-  const { services } = mockData
+  const { t, language } = useLanguage()
+  const services = getTranslatedServices(language)
   const { toast } = useToast()
   const [formData, setFormData] = useState({
     fullName: '',

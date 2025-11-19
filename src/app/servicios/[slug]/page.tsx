@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { generateMetadata as generateSEOMetadata, generateServiceSchema } from '@/lib/seo'
 import mockData from '@/data/mock-data.json'
-import { ServiceDetailContent } from './ServiceDetailContent'
+import { ServiceDetailWrapper } from './ServiceDetailWrapper'
 
 interface ServicePageProps {
   params: {
@@ -25,14 +25,15 @@ export async function generateMetadata({ params }: ServicePageProps) {
   })
 }
 
-export default function ServiceDetailPage({ params }: ServicePageProps) {
-  const service = mockData.services.find((s) => s.slug === params.slug)
-
-  if (!service) {
+export default async function ServiceDetailPage({ params }: ServicePageProps) {
+  // Para metadata, usamos el servicio original
+  const serviceForMetadata = mockData.services.find((s) => s.slug === params.slug)
+  
+  if (!serviceForMetadata) {
     notFound()
   }
 
-  const serviceSchema = generateServiceSchema(service)
+  const serviceSchema = generateServiceSchema(serviceForMetadata)
 
   return (
     <>
@@ -40,7 +41,7 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
-      <ServiceDetailContent service={service} relatedTestimonials={[]} />
+      <ServiceDetailWrapper slug={params.slug} />
     </>
   )
 }
